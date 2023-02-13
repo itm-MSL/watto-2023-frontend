@@ -5,9 +5,9 @@ import { Header } from '../components/header';
 import { Button } from '../components/button';
 import { Input } from '../components/input';
 
-const LOGIN_MUTATION = graphql(/* GraphQL */ `
-  mutation Login($username: String!, $password: String!) {
-    signin(username: $username, password: $password) {
+const SIGNUP_MUTATION = graphql(/* GraphQL */ `
+  mutation Signup($username: String!, $password: String!) {
+    signup(username: $username, password: $password) {
       result {
         token
         user {
@@ -21,8 +21,8 @@ const LOGIN_MUTATION = graphql(/* GraphQL */ `
   }
 `);
 
-export const Login = () => {
-  const [login, { data, loading, error }] = useMutation(LOGIN_MUTATION);
+export const Signup = () => {
+  const [signup, { data, loading, error }] = useMutation(SIGNUP_MUTATION);
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -30,22 +30,26 @@ export const Login = () => {
     const attrs = {
       username: data.get('username') as string,
       password: data.get('password') as string,
+      name: data.get('nameOfOwner') as string,
+      credits: data.get('credits'),
     };
     if (!attrs.username || !attrs.password) return;
 
-    login({
+    signup({
       variables: attrs,
     });
   };
 
   return (
     <div className="flex flex-col gap-3">
-      <Header>Login</Header>
+      <Header>Signup</Header>
       <form onSubmit={onSubmit} className="flex flex-col gap-3">
         <Input label="Username" type="text" name="username"></Input>
         <Input label="password" type="password" name="password"></Input>
+        <Input label="Name" type="text" name="nameOfOwner"></Input>
+        <Input label="Credits" type="number" name="credits"></Input>
 
-        <Button type="submit">Login</Button>
+        <Button type="submit">Signup</Button>
       </form>
 
       {loading && <div className="animate-spin ">.</div>}
