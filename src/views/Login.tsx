@@ -8,10 +8,15 @@ import { Input } from '../components/input';
 const SIGNUP_MUTATION = graphql(/* GraphQL */ `
   mutation Signup($username: String!, $password: String!) {
     signup(username: $username, password: $password) {
-      id
-      name
-      username
-      insertedAt
+      result {
+        token
+        user {
+          id
+        }
+      }
+      messages {
+        message
+      }
     }
   }
 `);
