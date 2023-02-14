@@ -5,5 +5,5 @@ type HeaderProps = {
 };
 
 export const Header = ({ children }: HeaderProps) => {
-  return <h1 className="text-3xl font-bold"> {children} </h1>;
+  return <h1 className="text-3xl font-bold pb-2"> {children} </h1>;
 };

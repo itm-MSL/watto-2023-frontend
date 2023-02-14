@@ -13,8 +13,10 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * Therefore it is highly recommended to use the babel-plugin for production.
  */
 const documents = {
-    "\n  mutation Login($username: String!, $password: String!) {\n    signin(username: $username, password: $password) {\n      result {\n        token\n        user {\n          id\n        }\n      }\n      messages {\n        message\n      }\n    }\n  }\n": types.LoginDocument,
-    "\n  mutation Signup($username: String!, $password: String!) {\n    signup(username: $username, password: $password) {\n      result {\n        token\n        user {\n          id\n        }\n      }\n      messages {\n        message\n      }\n    }\n  }\n": types.SignupDocument,
+    "\n  mutation Login($username: String!, $password: String!) {\n    signin(username: $username, password: $password) {\n      result {\n        token\n        user {\n          id\n          name\n        }\n      }\n      messages {\n        message\n      }\n    }\n  }\n": types.LoginDocument,
+    "\n  query ItemList {\n    itemList {\n      id\n      name\n    }\n  }\n": types.ItemListDocument,
+    "\n  query ItemById($id: Int!) {\n    itemById(id: $id) {\n      id\n      name\n      modelId\n      typeId\n    }\n  }\n": types.ItemByIdDocument,
+    "\n  mutation Signup($username: String!, $password: String!) {\n    signup(username: $username, password: $password) {\n      result {\n        token\n        user {\n          id\n          name\n        }\n      }\n      messages {\n        message\n      }\n    }\n  }\n": types.SignupDocument,
 };
 
 /**
@@ -34,11 +36,19 @@ export function graphql(source: string): unknown;
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  mutation Login($username: String!, $password: String!) {\n    signin(username: $username, password: $password) {\n      result {\n        token\n        user {\n          id\n        }\n      }\n      messages {\n        message\n      }\n    }\n  }\n"): (typeof documents)["\n  mutation Login($username: String!, $password: String!) {\n    signin(username: $username, password: $password) {\n      result {\n        token\n        user {\n          id\n        }\n      }\n      messages {\n        message\n      }\n    }\n  }\n"];
+export function graphql(source: "\n  mutation Login($username: String!, $password: String!) {\n    signin(username: $username, password: $password) {\n      result {\n        token\n        user {\n          id\n          name\n        }\n      }\n      messages {\n        message\n      }\n    }\n  }\n"): (typeof documents)["\n  mutation Login($username: String!, $password: String!) {\n    signin(username: $username, password: $password) {\n      result {\n        token\n        user {\n          id\n          name\n        }\n      }\n      messages {\n        message\n      }\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  mutation Signup($username: String!, $password: String!) {\n    signup(username: $username, password: $password) {\n      result {\n        token\n        user {\n          id\n        }\n      }\n      messages {\n        message\n      }\n    }\n  }\n"): (typeof documents)["\n  mutation Signup($username: String!, $password: String!) {\n    signup(username: $username, password: $password) {\n      result {\n        token\n        user {\n          id\n        }\n      }\n      messages {\n        message\n      }\n    }\n  }\n"];
+export function graphql(source: "\n  query ItemList {\n    itemList {\n      id\n      name\n    }\n  }\n"): (typeof documents)["\n  query ItemList {\n    itemList {\n      id\n      name\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  query ItemById($id: Int!) {\n    itemById(id: $id) {\n      id\n      name\n      modelId\n      typeId\n    }\n  }\n"): (typeof documents)["\n  query ItemById($id: Int!) {\n    itemById(id: $id) {\n      id\n      name\n      modelId\n      typeId\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  mutation Signup($username: String!, $password: String!) {\n    signup(username: $username, password: $password) {\n      result {\n        token\n        user {\n          id\n          name\n        }\n      }\n      messages {\n        message\n      }\n    }\n  }\n"): (typeof documents)["\n  mutation Signup($username: String!, $password: String!) {\n    signup(username: $username, password: $password) {\n      result {\n        token\n        user {\n          id\n          name\n        }\n      }\n      messages {\n        message\n      }\n    }\n  }\n"];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};

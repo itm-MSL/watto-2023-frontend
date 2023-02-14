@@ -12,6 +12,7 @@ const SIGNUP_MUTATION = graphql(/* GraphQL */ `
         token
         user {
           id
+          name
         }
       }
       messages {
@@ -48,13 +49,19 @@ export const Signup = () => {
         <Input label="password" type="password" name="password"></Input>
         <Input label="Name" type="text" name="nameOfOwner"></Input>
         <Input label="Credits" type="number" name="credits"></Input>
-
         <Button type="submit">Signup</Button>
       </form>
 
       {loading && <div className="animate-spin ">.</div>}
       {error && <div> {error.message} </div>}
-      {data && !error && <div> WELCOME beep boop {JSON.stringify(data)} </div>}
+      {data && !error && (
+        <div>
+          {' '}
+          WELCOME beep boop {JSON.stringify(
+            data.signup?.result?.user?.name,
+          )}{' '}
+        </div>
+      )}
     </div>
   );
 };

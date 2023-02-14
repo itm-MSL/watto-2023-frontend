@@ -12,6 +12,7 @@ const LOGIN_MUTATION = graphql(/* GraphQL */ `
         token
         user {
           id
+          name
         }
       }
       messages {
@@ -44,13 +45,14 @@ export const Login = () => {
       <form onSubmit={onSubmit} className="flex flex-col gap-3">
         <Input label="Username" type="text" name="username"></Input>
         <Input label="password" type="password" name="password"></Input>
-
         <Button type="submit">Login</Button>
       </form>
 
       {loading && <div className="animate-spin ">.</div>}
       {error && <div> {error.message} </div>}
-      {data && !error && <div> WELCOME beep boop {JSON.stringify(data)} </div>}
+      {data && !error && (
+        <div> WELCOME beep boop {data.signin?.result?.user?.id} </div>
+      )}
     </div>
   );
 };

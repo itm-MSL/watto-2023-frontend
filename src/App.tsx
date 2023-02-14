@@ -1,16 +1,30 @@
-import React from 'react';
 import { Header } from './components/header';
 import { Button } from './components/button';
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
-      <Header> Welcome </Header>
-      <Link to={'/login'}>
-        <Button> Login </Button>
-      </Link>
-    </div>
+    <>
+      <div className="flex flex-col m-4 p-4 bg-blue-500">
+        <Header> Watto's marketplace </Header>
+        <nav>
+          <Link to={'/signup'}>
+            <Button> Signup </Button>
+          </Link>
+
+          <Link to={'/login'}>
+            <Button> Login </Button>
+          </Link>
+
+          <Link to={'/market'}>
+            <Button> Market </Button>
+          </Link>
+        </nav>
+      </div>
+      <section className="m-4 p-4">
+        <Outlet />
+      </section>
+    </>
   );
 }
 
