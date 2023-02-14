@@ -20,10 +20,142 @@ export type Scalars = {
   NaiveDateTime: any;
 };
 
+export type CreateItemPayload = {
+  __typename?: 'CreateItemPayload';
+  /** A list of failed validations. May be blank or null if mutation succeeded. */
+  messages?: Maybe<Array<Maybe<ValidationMessage>>>;
+  /** The object created/updated/deleted by the mutation. May be null if mutation failed. */
+  result?: Maybe<Item>;
+  /** Indicates if the mutation completed successfully or not. */
+  successful: Scalars['Boolean'];
+};
+
+export type CreateModelPayload = {
+  __typename?: 'CreateModelPayload';
+  /** A list of failed validations. May be blank or null if mutation succeeded. */
+  messages?: Maybe<Array<Maybe<ValidationMessage>>>;
+  /** The object created/updated/deleted by the mutation. May be null if mutation failed. */
+  result?: Maybe<Model>;
+  /** Indicates if the mutation completed successfully or not. */
+  successful: Scalars['Boolean'];
+};
+
+export type CreateTypePayload = {
+  __typename?: 'CreateTypePayload';
+  /** A list of failed validations. May be blank or null if mutation succeeded. */
+  messages?: Maybe<Array<Maybe<ValidationMessage>>>;
+  /** The object created/updated/deleted by the mutation. May be null if mutation failed. */
+  result?: Maybe<Type>;
+  /** Indicates if the mutation completed successfully or not. */
+  successful: Scalars['Boolean'];
+};
+
+export type DeleteItemPayload = {
+  __typename?: 'DeleteItemPayload';
+  /** A list of failed validations. May be blank or null if mutation succeeded. */
+  messages?: Maybe<Array<Maybe<ValidationMessage>>>;
+  /** The object created/updated/deleted by the mutation. May be null if mutation failed. */
+  result?: Maybe<Item>;
+  /** Indicates if the mutation completed successfully or not. */
+  successful: Scalars['Boolean'];
+};
+
+export type DeleteModelPayload = {
+  __typename?: 'DeleteModelPayload';
+  /** A list of failed validations. May be blank or null if mutation succeeded. */
+  messages?: Maybe<Array<Maybe<ValidationMessage>>>;
+  /** The object created/updated/deleted by the mutation. May be null if mutation failed. */
+  result?: Maybe<Model>;
+  /** Indicates if the mutation completed successfully or not. */
+  successful: Scalars['Boolean'];
+};
+
+export type DeleteTypePayload = {
+  __typename?: 'DeleteTypePayload';
+  /** A list of failed validations. May be blank or null if mutation succeeded. */
+  messages?: Maybe<Array<Maybe<ValidationMessage>>>;
+  /** The object created/updated/deleted by the mutation. May be null if mutation failed. */
+  result?: Maybe<Type>;
+  /** Indicates if the mutation completed successfully or not. */
+  successful: Scalars['Boolean'];
+};
+
+export type Item = {
+  __typename?: 'Item';
+  id: Scalars['ID'];
+  insertedAt?: Maybe<Scalars['NaiveDateTime']>;
+  modelId?: Maybe<Scalars['Int']>;
+  name?: Maybe<Scalars['String']>;
+  typeId?: Maybe<Scalars['Int']>;
+  updatedAt?: Maybe<Scalars['NaiveDateTime']>;
+};
+
+export type Model = {
+  __typename?: 'Model';
+  id: Scalars['ID'];
+  insertedAt?: Maybe<Scalars['NaiveDateTime']>;
+  multiplier?: Maybe<Scalars['Float']>;
+  name?: Maybe<Scalars['String']>;
+  updatedAt?: Maybe<Scalars['NaiveDateTime']>;
+};
+
 export type RootMutationType = {
   __typename?: 'RootMutationType';
+  /** create a new item */
+  itemCreate?: Maybe<CreateItemPayload>;
+  /** delete an item */
+  itemDelete?: Maybe<DeleteItemPayload>;
+  /** updates an item */
+  itemUpdate?: Maybe<UpdateItemPayload>;
+  /** create a new model */
+  modelCreate?: Maybe<CreateModelPayload>;
+  /** delete a model */
+  modelDelete?: Maybe<DeleteModelPayload>;
+  /** updates a model */
+  modelUpdate?: Maybe<UpdateModelPayload>;
   signin?: Maybe<SigninPayload>;
   signup?: Maybe<SignupPayload>;
+  /** create a new type */
+  typeCreate?: Maybe<CreateTypePayload>;
+  /** deletes a type */
+  typeDelete?: Maybe<DeleteTypePayload>;
+  /** updates a type */
+  typeUpdate?: Maybe<UpdateTypePayload>;
+};
+
+
+export type RootMutationTypeItemCreateArgs = {
+  modelId?: InputMaybe<Scalars['Int']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
+
+export type RootMutationTypeItemDeleteArgs = {
+  id?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type RootMutationTypeItemUpdateArgs = {
+  id?: InputMaybe<Scalars['Int']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
+
+export type RootMutationTypeModelCreateArgs = {
+  multiplier?: InputMaybe<Scalars['Float']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
+
+export type RootMutationTypeModelDeleteArgs = {
+  id?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type RootMutationTypeModelUpdateArgs = {
+  id?: InputMaybe<Scalars['Int']>;
+  multiplier?: InputMaybe<Scalars['Float']>;
+  name?: InputMaybe<Scalars['String']>;
 };
 
 
@@ -38,14 +170,59 @@ export type RootMutationTypeSignupArgs = {
   username?: InputMaybe<Scalars['String']>;
 };
 
+
+export type RootMutationTypeTypeCreateArgs = {
+  indexPrice?: InputMaybe<Scalars['Int']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
+
+export type RootMutationTypeTypeDeleteArgs = {
+  id?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type RootMutationTypeTypeUpdateArgs = {
+  id?: InputMaybe<Scalars['Int']>;
+  indexPrice?: InputMaybe<Scalars['Int']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
 export type RootQueryType = {
   __typename?: 'RootQueryType';
   hello?: Maybe<Scalars['String']>;
+  /** fetch an item by id */
+  itemById?: Maybe<Item>;
+  /** fetches a list of items */
+  itemList?: Maybe<Array<Maybe<Item>>>;
+  /** fetch a model by id */
+  modelById?: Maybe<Model>;
+  /** fetches a list of models */
+  modelList?: Maybe<Array<Maybe<Model>>>;
+  /** fetch a type by id */
+  typeById?: Maybe<Type>;
+  /** fetch a list of types */
+  typeList?: Maybe<Array<Maybe<Type>>>;
 };
 
 
 export type RootQueryTypeHelloArgs = {
   name?: InputMaybe<Scalars['String']>;
+};
+
+
+export type RootQueryTypeItemByIdArgs = {
+  id?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type RootQueryTypeModelByIdArgs = {
+  id?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type RootQueryTypeTypeByIdArgs = {
+  id?: InputMaybe<Scalars['ID']>;
 };
 
 export type SigninPayload = {
@@ -64,6 +241,45 @@ export type SignupPayload = {
   messages?: Maybe<Array<Maybe<ValidationMessage>>>;
   /** The object created/updated/deleted by the mutation. May be null if mutation failed. */
   result?: Maybe<UserAuth>;
+  /** Indicates if the mutation completed successfully or not. */
+  successful: Scalars['Boolean'];
+};
+
+export type Type = {
+  __typename?: 'Type';
+  id: Scalars['ID'];
+  indexPrice?: Maybe<Scalars['Int']>;
+  insertedAt?: Maybe<Scalars['NaiveDateTime']>;
+  name?: Maybe<Scalars['String']>;
+  updatedAt?: Maybe<Scalars['NaiveDateTime']>;
+};
+
+export type UpdateItemPayload = {
+  __typename?: 'UpdateItemPayload';
+  /** A list of failed validations. May be blank or null if mutation succeeded. */
+  messages?: Maybe<Array<Maybe<ValidationMessage>>>;
+  /** The object created/updated/deleted by the mutation. May be null if mutation failed. */
+  result?: Maybe<Item>;
+  /** Indicates if the mutation completed successfully or not. */
+  successful: Scalars['Boolean'];
+};
+
+export type UpdateModelPayload = {
+  __typename?: 'UpdateModelPayload';
+  /** A list of failed validations. May be blank or null if mutation succeeded. */
+  messages?: Maybe<Array<Maybe<ValidationMessage>>>;
+  /** The object created/updated/deleted by the mutation. May be null if mutation failed. */
+  result?: Maybe<Model>;
+  /** Indicates if the mutation completed successfully or not. */
+  successful: Scalars['Boolean'];
+};
+
+export type UpdateTypePayload = {
+  __typename?: 'UpdateTypePayload';
+  /** A list of failed validations. May be blank or null if mutation succeeded. */
+  messages?: Maybe<Array<Maybe<ValidationMessage>>>;
+  /** The object created/updated/deleted by the mutation. May be null if mutation failed. */
+  result?: Maybe<Type>;
   /** Indicates if the mutation completed successfully or not. */
   successful: Scalars['Boolean'];
 };
