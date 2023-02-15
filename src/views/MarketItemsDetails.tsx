@@ -14,11 +14,12 @@ const ITEM_BY_ID = graphql(/* GraphQL */ `
         name
         indexPrice
       }
+      price
     }
   }
 `);
 
-const MarketDetails = () => {
+const MarketItemsDetails = () => {
   let { id } = useParams();
   const { data, loading, error } = useQuery(ITEM_BY_ID, {
     variables: { id: Number(id) },
@@ -29,12 +30,13 @@ const MarketDetails = () => {
   return (
     <>
       <div>
-        <h1>{data?.itemById?.name}</h1>
-        <p>Model: {data?.itemById?.modelId}</p>
-        <p>Type: {data?.itemById?.typeId}</p>
+        <h1>ItemName: {data?.itemById?.name}</h1>
+        <p>ModelId: {data?.itemById?.model.id}</p>
+        <p>TypeId: {data?.itemById?.type.id}</p>
+        <p>Price: {data?.itemById.price}</p>
       </div>
     </>
   );
 };
 
-export default MarketDetails;
+export default MarketItemsDetails;
