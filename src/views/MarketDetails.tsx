@@ -7,8 +7,13 @@ const ITEM_BY_ID = graphql(/* GraphQL */ `
     itemById(id: $id) {
       id
       name
-      modelId
-      typeId
+      model {
+        id
+      }
+      type {
+        name
+        indexPrice
+      }
     }
   }
 `);
