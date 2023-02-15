@@ -1608,7 +1608,7 @@
         "description": null,
         "fields": [
           {
-            "name": "credit",
+            "name": "credits",
             "description": null,
             "args": [],
             "type": {

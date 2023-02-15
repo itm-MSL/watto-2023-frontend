@@ -10,7 +10,7 @@ const ME = graphql(/* GraphQL */ `
         id
         name
         username
-        credit
+        credits
       }
     }
   }
@@ -31,7 +31,7 @@ const Profile = () => {
           <h1>UserId: {data?.me?.result?.id}</h1>
           <h2>UserName: {data?.me?.result?.username}</h2>
           <p>Name: {data?.me?.result?.name} </p>
-          <p>Credits: {data?.me?.result?.credit}</p>
+          <p>Credits: {data?.me?.result?.credits}</p>
         </div>
       </div>
     </>
