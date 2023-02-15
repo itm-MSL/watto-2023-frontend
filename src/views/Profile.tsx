@@ -32,6 +32,15 @@ const Profile = () => {
           <p>Credits: {data?.me?.credits}</p>
         </div>
       </div>
+
+      <SubHeader>Add Credits</SubHeader>
+
+      <div className="p-2 bg-green-50 grid grid-cols-2">
+        <div className="grid">
+          <label>Credits to add: </label>
+          <input type="number" />
+        </div>
+      </div>
     </>
   );
 };
