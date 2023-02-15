@@ -11,7 +11,8 @@ const ITEM_BY_ID = graphql(/* GraphQL */ `
         id
       }
       type {
-        id
+        name
+        indexPrice
       }
       price
     }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useMutation } from '@apollo/client';
 import { graphql } from '../gql';
 import { Header } from '../components/header';
@@ -8,6 +8,7 @@ import { Input } from '../components/input';
 const LOGIN_MUTATION = graphql(/* GraphQL */ `
   mutation Login($username: String!, $password: String!) {
     signin(username: $username, password: $password) {
+      successful
       result {
         token
         user {
@@ -27,10 +28,10 @@ export const Login = () => {
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const data = new FormData(e.currentTarget);
+    const input = new FormData(e.currentTarget);
     const attrs = {
-      username: data.get('username') as string,
-      password: data.get('password') as string,
+      username: input.get('username') as string,
+      password: input.get('password') as string,
     };
     if (!attrs.username || !attrs.password) return;
 
@@ -39,6 +40,13 @@ export const Login = () => {
     });
   };
 
+  useEffect(() => {
+    if (data?.signin?.successful) {
+      localStorage.setItem('token', data.signin.result.token);
+      console.log('token', data.signin.result.token);
+    }
+    console.log('result', data);
+  }, [data]);
   return (
     <div className="flex flex-col gap-3">
       <Header>Login</Header>
@@ -50,7 +58,7 @@ export const Login = () => {
 
       {loading && <div className="animate-spin ">.</div>}
       {error && <div> {error.message} </div>}
-      {data && !error && (
+      {data?.signin?.successful && !error && (
         <div> WELCOME beep boop {data.signin?.result?.user?.id} </div>
       )}
     </div>
