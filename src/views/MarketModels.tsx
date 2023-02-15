@@ -23,17 +23,21 @@ const MarketModels = () => {
       <SubHeader>All models:</SubHeader>
 
       <div className="p-2 bg-green-50 grid grid-cols-2">
-        {data?.modelList?.map((model: any) => (
-          <div key={model.id} className="grid bg-blue-50">
-            <Link
-              to={'/market/models/' + model.id}
-              className="hover:border-blue-400 border-2 rounded-md shadow-md p-2 m-2"
-            >
-              {model.name}
-            </Link>
-          </div>
-        ))}
-        <Outlet />
+        <div>
+          {data?.modelList?.map((model: any) => (
+            <div key={model.id} className="grid bg-blue-50">
+              <Link
+                to={'/market/models/' + model.id}
+                className="flex hover:border-blue-400 border-2 rounded-md shadow-md p-2 m-2"
+              >
+                {model.name}
+              </Link>
+            </div>
+          ))}
+        </div>
+        <div className="grid bg-blue-50 p-2">
+          <Outlet />
+        </div>
       </div>
     </>
   );

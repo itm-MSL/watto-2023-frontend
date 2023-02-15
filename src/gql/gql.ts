@@ -18,7 +18,7 @@ const documents = {
     "\n  query ItemById($id: Int!) {\n    itemById(id: $id) {\n      id\n      name\n      model {\n        id\n        name\n        multiplier\n      }\n      type {\n        id\n        name\n        indexPrice\n      }\n      price\n    }\n  }\n": types.ItemByIdDocument,
     "\n  query ModelList {\n    modelList {\n      id\n      name\n    }\n  }\n": types.ModelListDocument,
     "\n  query TypeList {\n    typeList {\n      id\n      name\n    }\n  }\n": types.TypeListDocument,
-    "\n  query Me {\n    me {\n      result {\n        id\n        name\n        username\n        credits\n      }\n    }\n  }\n": types.MeDocument,
+    "\n  query Me {\n    me {\n      id\n      name\n      username\n      credits\n    }\n  }\n": types.MeDocument,
     "\n  mutation Signup($username: String!, $password: String!) {\n    signup(username: $username, password: $password) {\n      result {\n        token\n        user {\n          id\n          name\n        }\n      }\n      messages {\n        message\n      }\n    }\n  }\n": types.SignupDocument,
 };
 
@@ -59,7 +59,7 @@ export function graphql(source: "\n  query TypeList {\n    typeList {\n      id\
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  query Me {\n    me {\n      result {\n        id\n        name\n        username\n        credits\n      }\n    }\n  }\n"): (typeof documents)["\n  query Me {\n    me {\n      result {\n        id\n        name\n        username\n        credits\n      }\n    }\n  }\n"];
+export function graphql(source: "\n  query Me {\n    me {\n      id\n      name\n      username\n      credits\n    }\n  }\n"): (typeof documents)["\n  query Me {\n    me {\n      id\n      name\n      username\n      credits\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

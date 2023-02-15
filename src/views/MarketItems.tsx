@@ -42,7 +42,9 @@ const MarketItems = () => {
             </div>
           ))}
         </div>
-        <Outlet />
+        <div className="grid bg-blue-50 p-2">
+          <Outlet />
+        </div>
       </div>
     </>
   );
