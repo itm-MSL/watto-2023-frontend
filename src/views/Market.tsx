@@ -1,5 +1,5 @@
 import { useQuery } from '@apollo/client';
-import { Link, Outlet } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Header } from '../components/header';
 import { graphql } from '../gql';
 import { Button } from '../components/button';
@@ -21,6 +21,9 @@ const Market = () => {
   return (
     <>
       <Header>Market items:</Header>
+      <Link to={'/market/create'}>
+        <Button> Create </Button>
+      </Link>
       <div className="p-2 bg-green-50">
         {data?.itemList?.map((item: any) => (
           <div className="grid bg-blue-50">

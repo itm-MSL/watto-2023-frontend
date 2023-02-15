@@ -4,6 +4,7 @@ import { Signup } from './views/Signup';
 import { Login } from './views/Login';
 import Market from './views/Market';
 import MarketDetails from './views/MarketDetails';
+import MarketCreate from './views/MarketCreate';
 
 export const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ export const router = createBrowserRouter([
       {
         path: '/market/:id',
         element: <MarketDetails />,
+      },
+      {
+        path: '/market/create',
+        element: <MarketCreate />,
       },
     ],
   },
