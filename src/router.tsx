@@ -2,12 +2,14 @@ import { createBrowserRouter } from 'react-router-dom';
 import App from './App';
 import { Signup } from './views/Signup';
 import { Login } from './views/Login';
-import MarketItems from './views/MarketItems';
-import MarketDetails from './views/MarketDetails';
-import MarketCreate from './views/MarketCreate';
-import MarketTypes from './views/MarketTypes';
-import MarketModels from './views/MarketModels';
 import Market from './views/Market';
+import MarketCreate from './views/MarketCreate';
+import MarketItems from './views/MarketItems';
+import MarketItemsDetails from './views/MarketItemsDetails';
+import MarketTypes from './views/MarketTypes';
+import MarketTypesDetails from './views/MarketTypesDetails';
+import MarketModels from './views/MarketModels';
+import MarketModelsDetails from './views/MarketModelsDetails';
 
 export const router = createBrowserRouter([
   {
@@ -29,20 +31,34 @@ export const router = createBrowserRouter([
           {
             path: 'items',
             element: <MarketItems />,
+            children: [
+              {
+                path: ':itemid',
+                element: <MarketItemsDetails />,
+              },
+            ],
           },
           {
             path: 'types',
             element: <MarketTypes />,
+            children: [
+              {
+                path: ':typeid',
+                element: <MarketTypesDetails />,
+              },
+            ],
           },
           {
             path: 'models',
             element: <MarketModels />,
+            children: [
+              {
+                path: ':modelid',
+                element: <MarketModelsDetails />,
+              },
+            ],
           },
         ],
-      },
-      {
-        path: '/market/:id',
-        element: <MarketDetails />,
       },
       {
         path: '/market/create',

@@ -34,9 +34,9 @@ const MarketItems = () => {
           <div key={item.id} className="grid bg-blue-50">
             <Link
               to={/market/ + item.id}
-              className="hover:border-blue-400 border-2 rounded-md shadow-md p-2 m-2"
+              className="flex hover:border-blue-400 border-2 rounded-md shadow-md p-2 m-2"
             >
-              Name: {item.name} Price: {item.price}
+              {item.name}
             </Link>
           </div>
         ))}

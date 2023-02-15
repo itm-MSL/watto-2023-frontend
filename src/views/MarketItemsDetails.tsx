@@ -18,7 +18,7 @@ const ITEM_BY_ID = graphql(/* GraphQL */ `
   }
 `);
 
-const MarketDetails = () => {
+const MarketItemsDetails = () => {
   let { id } = useParams();
   const { data, loading, error } = useQuery(ITEM_BY_ID, {
     variables: { id: Number(id) },
@@ -38,4 +38,4 @@ const MarketDetails = () => {
   );
 };
 
-export default MarketDetails;
+export default MarketItemsDetails;

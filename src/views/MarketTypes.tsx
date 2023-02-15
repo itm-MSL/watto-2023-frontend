@@ -1,6 +1,5 @@
 import { useQuery } from '@apollo/client';
 import { Link } from 'react-router-dom';
-import { Button } from '../components/button';
 import { SubHeader } from '../components/subheader';
 import { graphql } from '../gql';
 
@@ -27,10 +26,10 @@ const MarketTypes = () => {
         {data?.typeList?.map((type: any) => (
           <div key={type.id} className="grid bg-blue-50">
             <Link
-              to={/market/ + type.id}
+              to={/types/ + type.id}
               className="hover:border-blue-400 border-2 rounded-md shadow-md p-2 m-2"
             >
-              Type: {type.name}
+              {type.name}
             </Link>
           </div>
         ))}

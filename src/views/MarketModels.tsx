@@ -26,10 +26,10 @@ const MarketModels = () => {
         {data?.modelList?.map((model: any) => (
           <div key={model.id} className="grid bg-blue-50">
             <Link
-              to={/market/ + model.id}
+              to={/models/ + model.id}
               className="hover:border-blue-400 border-2 rounded-md shadow-md p-2 m-2"
             >
-              Model: {model.name}
+              {model.name}
             </Link>
           </div>
         ))}
