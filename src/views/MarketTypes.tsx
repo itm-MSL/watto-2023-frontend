@@ -1,7 +1,7 @@
 import { useQuery } from '@apollo/client';
 import { Link } from 'react-router-dom';
 import { Button } from '../components/button';
-import { Header } from '../components/header';
+import { SubHeader } from '../components/subheader';
 import { graphql } from '../gql';
 
 const TYPE_LIST = graphql(/* GraphQL */ `
@@ -21,15 +21,14 @@ const MarketTypes = () => {
 
   return (
     <>
-      <Header>All types:</Header>
+      <SubHeader>All types:</SubHeader>
 
       <div className="p-2 bg-green-50">
         {data?.typeList?.map((type: any) => (
-          <div className="grid bg-blue-50">
+          <div key={type.id} className="grid bg-blue-50">
             <Link
               to={/market/ + type.id}
               className="hover:border-blue-400 border-2 rounded-md shadow-md p-2 m-2"
-              key={type.id}
             >
               Name: {type.name}
             </Link>
