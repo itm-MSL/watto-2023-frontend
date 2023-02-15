@@ -33,7 +33,8 @@ const MarketItemsDetails = () => {
   return (
     <>
       <div>
-        <h1>ItemName: {data?.itemById?.name}</h1>
+        <h1>Id: {data?.itemById?.id}</h1>
+        <h1>Name: {data?.itemById?.name}</h1>
         <p>ModelId: {data?.itemById?.model.id}</p>
         <p>TypeId: {data?.itemById?.type.id}</p>
         <p>Price: {data?.itemById.price}</p>
