@@ -17,7 +17,11 @@ function App() {
           </Link>
 
           <Link to={'/market'}>
-            <Button> Market </Button>
+            <Button> Market</Button>
+          </Link>
+
+          <Link to={'/market/create'}>
+            <Button> Add inventory </Button>
           </Link>
         </nav>
       </div>
