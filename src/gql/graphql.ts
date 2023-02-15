@@ -114,14 +114,16 @@ export type RootMutationType = {
   modelDelete?: Maybe<DeleteModelPayload>;
   /** updates a model */
   modelUpdate?: Maybe<UpdateModelPayload>;
-  signin?: Maybe<SigninPayload>;
-  signup?: Maybe<SignupPayload>;
+  signin?: Maybe<UserAuthPayload>;
+  signup?: Maybe<UserAuthPayload>;
   /** create a new type */
   typeCreate?: Maybe<CreateTypePayload>;
   /** deletes a type */
   typeDelete?: Maybe<DeleteTypePayload>;
   /** updates a type */
   typeUpdate?: Maybe<UpdateTypePayload>;
+  /** updates credits for a user */
+  userCreditsUpdate?: Maybe<UserCreditUpdatePayload>;
 };
 
 
@@ -129,6 +131,7 @@ export type RootMutationTypeItemCreateArgs = {
   modelId: Scalars['Int'];
   name: Scalars['String'];
   typeId: Scalars['Int'];
+  userId: Scalars['Int'];
 };
 
 
@@ -140,6 +143,7 @@ export type RootMutationTypeItemDeleteArgs = {
 export type RootMutationTypeItemUpdateArgs = {
   id?: InputMaybe<Scalars['Int']>;
   name?: InputMaybe<Scalars['String']>;
+  userId?: InputMaybe<Scalars['Int']>;
 };
 
 
@@ -190,6 +194,12 @@ export type RootMutationTypeTypeUpdateArgs = {
   name?: InputMaybe<Scalars['String']>;
 };
 
+
+export type RootMutationTypeUserCreditsUpdateArgs = {
+  credits?: InputMaybe<Scalars['Float']>;
+  userId?: InputMaybe<Scalars['Int']>;
+};
+
 export type RootQueryType = {
   __typename?: 'RootQueryType';
   hello?: Maybe<Scalars['String']>;
@@ -197,6 +207,8 @@ export type RootQueryType = {
   itemById: Item;
   /** fetches a list of items */
   itemList?: Maybe<Array<Item>>;
+  /** find items belonging to a user */
+  itemsByUserId?: Maybe<Array<Item>>;
   me?: Maybe<User>;
   /** fetch a model by id */
   modelById?: Maybe<Model>;
@@ -219,6 +231,11 @@ export type RootQueryTypeItemByIdArgs = {
 };
 
 
+export type RootQueryTypeItemsByUserIdArgs = {
+  userId?: InputMaybe<Scalars['Int']>;
+};
+
+
 export type RootQueryTypeModelByIdArgs = {
   id?: InputMaybe<Scalars['Int']>;
 };
@@ -226,26 +243,6 @@ export type RootQueryTypeModelByIdArgs = {
 
 export type RootQueryTypeTypeByIdArgs = {
   id?: InputMaybe<Scalars['Int']>;
-};
-
-export type SigninPayload = {
-  __typename?: 'SigninPayload';
-  /** A list of failed validations. May be blank or null if mutation succeeded. */
-  messages?: Maybe<Array<Maybe<ValidationMessage>>>;
-  /** The object created/updated/deleted by the mutation. May be null if mutation failed. */
-  result?: Maybe<UserAuth>;
-  /** Indicates if the mutation completed successfully or not. */
-  successful: Scalars['Boolean'];
-};
-
-export type SignupPayload = {
-  __typename?: 'SignupPayload';
-  /** A list of failed validations. May be blank or null if mutation succeeded. */
-  messages?: Maybe<Array<Maybe<ValidationMessage>>>;
-  /** The object created/updated/deleted by the mutation. May be null if mutation failed. */
-  result?: Maybe<UserAuth>;
-  /** Indicates if the mutation completed successfully or not. */
-  successful: Scalars['Boolean'];
 };
 
 export type Type = {
@@ -301,6 +298,26 @@ export type UserAuth = {
   __typename?: 'UserAuth';
   token: Scalars['String'];
   user?: Maybe<User>;
+};
+
+export type UserAuthPayload = {
+  __typename?: 'UserAuthPayload';
+  /** A list of failed validations. May be blank or null if mutation succeeded. */
+  messages?: Maybe<Array<Maybe<ValidationMessage>>>;
+  /** The object created/updated/deleted by the mutation. May be null if mutation failed. */
+  result?: Maybe<UserAuth>;
+  /** Indicates if the mutation completed successfully or not. */
+  successful: Scalars['Boolean'];
+};
+
+export type UserCreditUpdatePayload = {
+  __typename?: 'UserCreditUpdatePayload';
+  /** A list of failed validations. May be blank or null if mutation succeeded. */
+  messages?: Maybe<Array<Maybe<ValidationMessage>>>;
+  /** The object created/updated/deleted by the mutation. May be null if mutation failed. */
+  result?: Maybe<User>;
+  /** Indicates if the mutation completed successfully or not. */
+  successful: Scalars['Boolean'];
 };
 
 /**
@@ -372,7 +389,7 @@ export type LoginMutationVariables = Exact<{
 }>;
 
 
-export type LoginMutation = { __typename?: 'RootMutationType', signin?: { __typename?: 'SigninPayload', successful: boolean, result?: { __typename?: 'UserAuth', token: string, user?: { __typename?: 'User', id: string, name: string } | null } | null, messages?: Array<{ __typename?: 'ValidationMessage', message?: string | null } | null> | null } | null };
+export type LoginMutation = { __typename?: 'RootMutationType', signin?: { __typename?: 'UserAuthPayload', successful: boolean, result?: { __typename?: 'UserAuth', token: string, user?: { __typename?: 'User', id: string, name: string } | null } | null, messages?: Array<{ __typename?: 'ValidationMessage', message?: string | null } | null> | null } | null };
 
 export type ItemListQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -421,7 +438,7 @@ export type SignupMutationVariables = Exact<{
 }>;
 
 
-export type SignupMutation = { __typename?: 'RootMutationType', signup?: { __typename?: 'SignupPayload', result?: { __typename?: 'UserAuth', token: string, user?: { __typename?: 'User', id: string, name: string } | null } | null, messages?: Array<{ __typename?: 'ValidationMessage', message?: string | null } | null> | null } | null };
+export type SignupMutation = { __typename?: 'RootMutationType', signup?: { __typename?: 'UserAuthPayload', result?: { __typename?: 'UserAuth', token: string, user?: { __typename?: 'User', id: string, name: string } | null } | null, messages?: Array<{ __typename?: 'ValidationMessage', message?: string | null } | null> | null } | null };
 
 
 export const LoginDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"Login"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"username"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"password"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"signin"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"username"},"value":{"kind":"Variable","name":{"kind":"Name","value":"username"}}},{"kind":"Argument","name":{"kind":"Name","value":"password"},"value":{"kind":"Variable","name":{"kind":"Name","value":"password"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"successful"}},{"kind":"Field","name":{"kind":"Name","value":"result"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"token"}},{"kind":"Field","name":{"kind":"Name","value":"user"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"messages"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"message"}}]}}]}}]}}]} as unknown as DocumentNode<LoginMutation, LoginMutationVariables>;

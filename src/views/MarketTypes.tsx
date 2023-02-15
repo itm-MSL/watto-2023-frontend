@@ -25,10 +25,10 @@ const MarketTypes = () => {
       <div className="p-2 bg-green-50 grid grid-cols-2">
         <div>
           {data?.typeList?.map((type: any) => (
-            <div key={type.id} className="grid bg-blue-50">
+            <div key={type.id} className="px-4 grid bg-blue-50">
               <Link
                 to={'/market/types/' + type.id}
-                className="flex hover:border-blue-400 border-2 rounded-md shadow-md p-2 m-2"
+                className="flex hover:scale-105 border-2 rounded-md shadow-md py-2 my-2 mx-4 px-4"
               >
                 {type.name}
               </Link>

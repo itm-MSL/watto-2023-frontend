@@ -32,12 +32,16 @@ const MarketItemsDetails = () => {
   console.log(data);
   return (
     <>
-      <div>
-        <h1>Id: {data?.itemById?.id}</h1>
-        <h1>Name: {data?.itemById?.name}</h1>
-        <p>ModelId: {data?.itemById?.model.id}</p>
-        <p>TypeId: {data?.itemById?.type.id}</p>
-        <p>Price: {data?.itemById.price}</p>
+      <div className="px-4 bg-blue-100 shadow-md flex flex-col">
+        <div className="bg-blue-200 p-2 m-2">
+          <p className="font-bold">Price: {data?.itemById.price}</p>
+          <h1 className="text-xl">Name: {data?.itemById?.name}</h1>
+          <p>Id: {data?.itemById?.id}</p>
+          <h1 className="text-xl">Model: {data?.itemById?.model.name}</h1>
+          <p>Id: {data?.itemById?.model.id}</p>
+          <h1 className="text-xl">Type: {data?.itemById?.type.name}</h1>
+          <p>Id: {data?.itemById?.type.id}</p>
+        </div>
       </div>
     </>
   );

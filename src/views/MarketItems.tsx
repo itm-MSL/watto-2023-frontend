@@ -32,17 +32,17 @@ const MarketItems = () => {
       <div className="p-2 bg-green-50 grid grid-cols-2">
         <div>
           {data?.itemList?.map((item: any) => (
-            <div key={item.id} className="grid bg-blue-50">
+            <div key={item.id} className="grid bg-blue-50 px-4">
               <Link
                 to={'/market/items/' + item.id}
-                className="flex hover:border-blue-400 border-2 rounded-md shadow-md p-2 m-2"
+                className="flex hover:scale-105 border-2 rounded-md shadow-md py-2 my-2 mx-4 px-4"
               >
                 {item.name}
               </Link>
             </div>
           ))}
         </div>
-        <div className="grid bg-blue-50 p-2">
+        <div className="grid bg-blue-50 ml-2">
           <Outlet />
         </div>
       </div>
