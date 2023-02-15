@@ -30,7 +30,7 @@ const MarketTypes = () => {
               to={/market/ + type.id}
               className="hover:border-blue-400 border-2 rounded-md shadow-md p-2 m-2"
             >
-              Name: {type.name}
+              Type: {type.name}
             </Link>
           </div>
         ))}

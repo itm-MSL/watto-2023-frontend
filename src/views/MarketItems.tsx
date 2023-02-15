@@ -8,6 +8,13 @@ const ITEM_LIST = graphql(/* GraphQL */ `
     itemList {
       id
       name
+      model {
+        id
+      }
+      type {
+        id
+      }
+      price
     }
   }
 `);

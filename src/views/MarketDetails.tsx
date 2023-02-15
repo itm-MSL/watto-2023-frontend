@@ -7,8 +7,13 @@ const ITEM_BY_ID = graphql(/* GraphQL */ `
     itemById(id: $id) {
       id
       name
-      modelId
-      typeId
+      model {
+        id
+      }
+      type {
+        id
+      }
+      price
     }
   }
 `);
@@ -24,9 +29,10 @@ const MarketDetails = () => {
   return (
     <>
       <div>
-        <h1>{data?.itemById?.name}</h1>
-        <p>Model: {data?.itemById?.modelId}</p>
-        <p>Type: {data?.itemById?.typeId}</p>
+        <h1>ItemName: {data?.itemById?.name}</h1>
+        <p>ModelId: {data?.itemById?.model.id}</p>
+        <p>TypeId: {data?.itemById?.type.id}</p>
+        <p>Price: {data?.itemById.price}</p>
       </div>
     </>
   );
