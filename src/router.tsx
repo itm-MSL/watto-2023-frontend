@@ -10,6 +10,7 @@ import MarketTypes from './views/MarketTypes';
 import MarketTypesDetails from './views/MarketTypesDetails';
 import MarketModels from './views/MarketModels';
 import MarketModelsDetails from './views/MarketModelsDetails';
+import Profile from './views/Profile';
 
 export const router = createBrowserRouter([
   {
@@ -63,6 +64,10 @@ export const router = createBrowserRouter([
       {
         path: '/market/create',
         element: <MarketCreate />,
+      },
+      {
+        path: '/profile',
+        element: <Profile />,
       },
     ],
   },

@@ -1,5 +1,5 @@
 import { useQuery } from '@apollo/client';
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import { SubHeader } from '../components/subheader';
 import { graphql } from '../gql';
 
@@ -22,17 +22,18 @@ const MarketModels = () => {
     <>
       <SubHeader>All models:</SubHeader>
 
-      <div className="p-2 bg-green-50">
+      <div className="p-2 bg-green-50 grid grid-cols-2">
         {data?.modelList?.map((model: any) => (
           <div key={model.id} className="grid bg-blue-50">
             <Link
-              to={/models/ + model.id}
+              to={'/market/models/' + model.id}
               className="hover:border-blue-400 border-2 rounded-md shadow-md p-2 m-2"
             >
               {model.name}
             </Link>
           </div>
         ))}
+        <Outlet />
       </div>
     </>
   );

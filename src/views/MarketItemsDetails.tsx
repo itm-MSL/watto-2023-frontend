@@ -9,8 +9,11 @@ const ITEM_BY_ID = graphql(/* GraphQL */ `
       name
       model {
         id
+        name
+        multiplier
       }
       type {
+        id
         name
         indexPrice
       }
@@ -20,9 +23,9 @@ const ITEM_BY_ID = graphql(/* GraphQL */ `
 `);
 
 const MarketItemsDetails = () => {
-  let { id } = useParams();
+  let { itemid } = useParams();
   const { data, loading, error } = useQuery(ITEM_BY_ID, {
-    variables: { id: Number(id) },
+    variables: { id: Number(itemid) },
   });
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;

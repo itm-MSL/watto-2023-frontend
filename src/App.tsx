@@ -23,6 +23,10 @@ function App() {
           <Link to={'/market/create'}>
             <Button> Add inventory </Button>
           </Link>
+
+          <Link to={'/profile'}>
+            <Button> My profile </Button>
+          </Link>
         </nav>
       </div>
       <section className="m-4 p-4">
