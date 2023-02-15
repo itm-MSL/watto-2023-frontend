@@ -21,20 +21,17 @@ const Market = () => {
   return (
     <>
       <Header>Market items:</Header>
-      <div className="flex flex-wrap">
+      <div className="p-2 bg-green-50">
         {data?.itemList?.map((item: any) => (
-          <>
+          <div className="grid bg-blue-50">
             <Link
               to={/market/ + item.id}
-              className="border rounded-md shadow-md p-2 m-2 w-1/3 overflow-hidden md:w-1/4"
+              className="hover:border-blue-400 border-2 rounded-md shadow-md p-2 m-2"
               key={item.id}
             >
-              {item.name}
+              Name: {item.name} Price: {item.price}
             </Link>
-            <Button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 m-2 rounded">
-              Buy
-            </Button>
-          </>
+          </div>
         ))}
       </div>
     </>
