@@ -22,7 +22,7 @@ const MarketTypes = () => {
     <>
       <SubHeader>All types:</SubHeader>
 
-      <div className="p-2 bg-green-50 grid grid-cols-2">
+      <div className="p-2 bg-blue-500 grid grid-cols-2">
         <div>
           {data?.typeList?.map((type: any) => (
             <div key={type.id} className="px-4 grid bg-blue-50">
@@ -35,7 +35,7 @@ const MarketTypes = () => {
             </div>
           ))}
         </div>
-        <div className="grid bg-blue-50 p-2">
+        <div className="grid bg-blue-50 p-2 shadow-md">
           <Outlet />
         </div>
       </div>

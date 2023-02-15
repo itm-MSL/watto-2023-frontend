@@ -24,8 +24,8 @@ const MarketModelsDetails = () => {
   return (
     <>
       <div className="px-4 bg-blue-100 shadow-md flex flex-col">
-        <h1 className="text-xl">Id: {data?.modelById?.id}</h1>
-        <p>Name: {data?.modelById?.name}</p>
+        <h1 className="text-xl">Name: {data?.modelById?.name}</h1>
+        <p>Id: {data?.modelById?.id}</p>
         <p>Multiplier: {data?.modelById?.multiplier}</p>
       </div>
     </>

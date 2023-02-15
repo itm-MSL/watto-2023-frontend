@@ -22,7 +22,7 @@ const MarketModels = () => {
     <>
       <SubHeader>All models:</SubHeader>
 
-      <div className="p-2 bg-green-50 grid grid-cols-2">
+      <div className="p-2 bg-blue-500 grid grid-cols-2">
         <div>
           {data?.modelList?.map((model: any) => (
             <div key={model.id} className="grid bg-blue-50 px-4">
@@ -35,7 +35,7 @@ const MarketModels = () => {
             </div>
           ))}
         </div>
-        <div className="grid bg-blue-50 p-2">
+        <div className="grid bg-blue-50 p-2 shadow-md">
           <Outlet />
         </div>
       </div>

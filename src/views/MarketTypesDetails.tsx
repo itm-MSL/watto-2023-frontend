@@ -24,9 +24,9 @@ const MarketTypesDetails = () => {
   return (
     <>
       <div className="px-4 bg-blue-100 shadow-md flex flex-col">
-        <h1 className="text-xl">Id: {data?.typeById?.id}</h1>
-        <p>Name: {data?.typeById?.name}</p>
-        <p>Multiplier: {data?.typeById?.indexPrice}</p>
+        <h1 className="text-xl">Name: {data?.typeById?.name}</h1>
+        <p>Id: {data?.typeById?.id}</p>
+        <p>IndexPrice: {data?.typeById?.indexPrice}</p>
       </div>
     </>
   );
