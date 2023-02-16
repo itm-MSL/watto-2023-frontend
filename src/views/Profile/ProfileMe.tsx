@@ -1,4 +1,5 @@
 import { useQuery } from '@apollo/client';
+import { SubHeader } from '../../components/subheader';
 import { graphql } from '../../gql';
 import ProfileCreditsUpdate from './ProfileCreditsUpdate';
 
@@ -19,6 +20,7 @@ const ProfileMe = () => {
   if (error) return <div>Error: {error.message}</div>;
   return (
     <div>
+      <SubHeader>My info:</SubHeader>
       <div className="p-2 bg-blue-100 grid">
         <div className="p-2 flex flex-col gap-3 bg-blue-50">
           <h1>UserId: {data?.me?.id}</h1>

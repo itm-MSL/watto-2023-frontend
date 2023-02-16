@@ -29,9 +29,9 @@ const ProfileMyItems = () => {
   if (error) return <div>Error: {error.message}</div>;
 
   return (
-    <>
+    <div>
+      <SubHeader>My items:</SubHeader>
       <div className="p-2 bg-blue-100 grid">
-        <SubHeader>My items:</SubHeader>
         {data?.itemsByUserId?.map((item: any) => (
           <div key={item.id} className="flex flex-col bg-blue-50">
             <div className="hover:italic border-2 rounded-md shadow-md py-2 my-2 mx-4 px-4">
@@ -41,7 +41,7 @@ const ProfileMyItems = () => {
         ))}
       </div>
       <div className="grid bg-blue-50 ml-2 shadow-md"></div>
-    </>
+    </div>
   );
 };
 

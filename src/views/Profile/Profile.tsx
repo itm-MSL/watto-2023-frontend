@@ -1,12 +1,11 @@
-import { SubHeader } from '../../components/subheader';
-import ProfileCreditsUpdate from './ProfileCreditsUpdate';
 import ProfileMyItems from './ProfileMyItems';
 import ProfileMe from './ProfileMe';
+import { Header } from '../../components/header';
 
 const Profile = () => {
   return (
     <>
-      <SubHeader>My Profile:</SubHeader>
+      <Header>My Profile</Header>
       <div className="grid grid-cols-2">
         <ProfileMe />
         <ProfileMyItems />
