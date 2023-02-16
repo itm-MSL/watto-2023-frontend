@@ -29,7 +29,7 @@ const MarketItems = () => {
     <>
       <SubHeader>All items:</SubHeader>
 
-      <div className="p-2 bg-blue-500 grid grid-cols-2">
+      <div className="p-2 bg-blue-100 grid grid-cols-2">
         <div>
           {data?.itemList?.map((item: any) => (
             <div key={item.id} className="grid bg-blue-50 px-4">

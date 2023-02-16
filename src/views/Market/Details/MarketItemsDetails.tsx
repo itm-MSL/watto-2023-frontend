@@ -32,19 +32,17 @@ const MarketItemsDetails = () => {
   if (error) return <div>Error: {error.message}</div>;
 
   return (
-    <>
-      <div className="px-4 bg-blue-100 shadow-md flex flex-col">
-        <div className="bg-blue-200 p-2 m-2">
-          <p className="font-bold">Price: {data?.itemById.price}</p>
-          <h1 className="text-xl">Name: {data?.itemById?.name}</h1>
-          <p>Id: {data?.itemById?.id}</p>
-          <h1 className="text-xl">Model: {data?.itemById?.model.name}</h1>
-          <p>Id: {data?.itemById?.model.id}</p>
-          <h1 className="text-xl">Type: {data?.itemById?.type.name}</h1>
-          <p>Id: {data?.itemById?.type.id}</p>
-        </div>
+    <div className="px-4 bg-blue-50 shadow-md flex flex-col">
+      <div className="bg-blue-200 p-2 m-2 rounded-xl">
+        <p className="font-bold">Price: {data?.itemById.price}</p>
+        <h1 className="text-xl">Name: {data?.itemById?.name}</h1>
+        <p>Id: {data?.itemById?.id}</p>
+        <h1 className="text-xl">Model: {data?.itemById?.model.name}</h1>
+        <p>Id: {data?.itemById?.model.id}</p>
+        <h1 className="text-xl">Type: {data?.itemById?.type.name}</h1>
+        <p>Id: {data?.itemById?.type.id}</p>
       </div>
-    </>
+    </div>
   );
 };
 

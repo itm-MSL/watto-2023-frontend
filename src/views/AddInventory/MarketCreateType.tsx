@@ -35,7 +35,7 @@ const MarketCreateType = () => {
 
   return (
     <div className="flex flex-col gap-3 mr-4">
-      <SubHeader>New type:</SubHeader>
+      <SubHeader>Type:</SubHeader>
       <form onSubmit={onSubmit} className="flex flex-col gap-3">
         <Input label="Name" type="text" name="name"></Input>
         <Input label="IndexPrice" type="number" name="indexPrice"></Input>

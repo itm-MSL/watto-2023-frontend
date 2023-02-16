@@ -1,4 +1,3 @@
-import { SubHeader } from '../../components/subheader';
 import { Input } from '../../components/input';
 import { Button } from '../../components/button';
 import { graphql } from '../../gql';
@@ -16,14 +15,14 @@ const USER_CREDITS_UPDATE = graphql(/* GraphQL */ `
   }
 `);
 
-const ProfileCreditsUpdate = () => {
+const ProfileCreditsUpdate = ({ myuserId }: { myuserId: number }) => {
   const [userCreditsUpdate, { data, loading, error }] =
     useMutation(USER_CREDITS_UPDATE);
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
-    const userId = data.get('userId');
+    const userId = myuserId;
     const credits = data.get('credits');
     userCreditsUpdate({
       variables: {
@@ -34,10 +33,11 @@ const ProfileCreditsUpdate = () => {
   };
 
   return (
-    <div className="flex flex-col gap-3 mr-4">
-      <SubHeader>Update credits</SubHeader>
-      <form onSubmit={onSubmit} className="flex flex-col gap-3">
-        <Input label="UserId" type="number" name="userId"></Input>
+    <>
+      <form
+        onSubmit={onSubmit}
+        className="flex flex-col gap-3 bg-blue-50 m-2 p-2"
+      >
         <Input label="Credits" type="number" name="credits"></Input>
         <Button type="submit">Add</Button>
       </form>
@@ -46,12 +46,11 @@ const ProfileCreditsUpdate = () => {
       {error && <div> {error.message} </div>}
       {data && !error && (
         <div>
-          {' '}
-          Updated credits to:{' '}
+          Updated credits to: {''}
           {JSON.stringify(data.userCreditsUpdate?.result?.credits)}
         </div>
       )}
-    </div>
+    </>
   );
 };
 

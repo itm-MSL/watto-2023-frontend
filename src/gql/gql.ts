@@ -25,6 +25,7 @@ const documents = {
     "\n  mutation TypeCreate($name: String!, $indexPrice: Int!) {\n    typeCreate(name: $name, indexPrice: $indexPrice) {\n      successful\n      result {\n        id\n        name\n        indexPrice\n        insertedAt\n      }\n    }\n  }\n": types.TypeCreateDocument,
     "\n  query Me {\n    me {\n      id\n      name\n      username\n      credits\n    }\n  }\n": types.MeDocument,
     "\n  mutation UserCreditsUpdate($userId: Int!, $credits: Float!) {\n    userCreditsUpdate(userId: $userId, credits: $credits) {\n      successful\n      result {\n        id\n        credits\n      }\n    }\n  }\n": types.UserCreditsUpdateDocument,
+    "\n  query ItemsByUserId($userId: Int!) {\n    itemsByUserId(userId: $userId) {\n      id\n      name\n      model {\n        id\n      }\n      type {\n        id\n      }\n      price\n    }\n  }\n": types.ItemsByUserIdDocument,
     "\n  mutation Signup($username: String!, $password: String!) {\n    signup(username: $username, password: $password) {\n      result {\n        token\n        user {\n          id\n          name\n        }\n      }\n      messages {\n        message\n      }\n    }\n  }\n": types.SignupDocument,
 };
 
@@ -90,6 +91,10 @@ export function graphql(source: "\n  query Me {\n    me {\n      id\n      name\
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(source: "\n  mutation UserCreditsUpdate($userId: Int!, $credits: Float!) {\n    userCreditsUpdate(userId: $userId, credits: $credits) {\n      successful\n      result {\n        id\n        credits\n      }\n    }\n  }\n"): (typeof documents)["\n  mutation UserCreditsUpdate($userId: Int!, $credits: Float!) {\n    userCreditsUpdate(userId: $userId, credits: $credits) {\n      successful\n      result {\n        id\n        credits\n      }\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  query ItemsByUserId($userId: Int!) {\n    itemsByUserId(userId: $userId) {\n      id\n      name\n      model {\n        id\n      }\n      type {\n        id\n      }\n      price\n    }\n  }\n"): (typeof documents)["\n  query ItemsByUserId($userId: Int!) {\n    itemsByUserId(userId: $userId) {\n      id\n      name\n      model {\n        id\n      }\n      type {\n        id\n      }\n      price\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

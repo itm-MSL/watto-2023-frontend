@@ -4,46 +4,61 @@ import { Button } from '../../components/button';
 import { graphql } from '../../gql';
 import { useMutation } from '@apollo/client';
 
-const MODEL_CREATE = graphql(/* GraphQL */ `
-  mutation modelCreate($name: String!, $multiplier: Float!) {
-    modelCreate(name: $name, multiplier: $multiplier) {
+const ITEM_CREATE = graphql(/* GraphQL */ `
+  mutation ItemCreate(
+    $name: String!
+    $typeId: Int!
+    $modelId: Int!
+    $userId: Int!
+  ) {
+    itemCreate(
+      name: $name
+      typeId: $typeId
+      modelId: $modelId
+      userId: $userId
+    ) {
       successful
       result {
         id
         name
-        multiplier
+        model {
+          id
+        }
+        type {
+          id
+        }
         insertedAt
       }
     }
   }
 `);
-
-const MarketCreateModel = () => {
-  const [modelCreate, { data, loading, error }] = useMutation(MODEL_CREATE);
+const MarketCreateItem = () => {
+  const [itemCreate, { data, loading, error }] = useMutation(ITEM_CREATE);
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
     const name = data.get('name') as string;
-    const multiplier = data.get('multiplier');
-    modelCreate({
+    const typeId = data.get('typeId');
+    const modelId = data.get('modelId');
+    const userId = data.get('userId');
+    itemCreate({
       variables: {
         name: name,
-        multiplier: Number(multiplier),
+        typeId: Number(typeId),
+        modelId: Number(modelId),
+        userId: Number(userId),
       },
     });
   };
 
   return (
     <div className="flex flex-col gap-3 mr-4">
-      <SubHeader>New model:</SubHeader>
+      <SubHeader>Item:</SubHeader>
       <form onSubmit={onSubmit} className="flex flex-col gap-3">
         <Input label="Name" type="text" name="name"></Input>
-        <Input
-          label="Multiplier"
-          type="number"
-          step="0.01"
-          name="multiplier"
-        ></Input>
+        <Input label="TypeId" type="number" name="typeId"></Input>
+        <Input label="ModelId" type="number" name="modelId"></Input>
+        <Input label="UserId" type="number" name="userId"></Input>
         <Button type="submit">Create</Button>
       </form>
 
@@ -52,11 +67,10 @@ const MarketCreateModel = () => {
       {data && !error && (
         <div>
           {' '}
-          Created model: {JSON.stringify(data.modelCreate?.result?.name)}{' '}
+          Created item: {JSON.stringify(data.itemCreate?.result?.name)}{' '}
         </div>
       )}
     </div>
   );
 };
-
-export default MarketCreateModel;
+export default MarketCreateItem;

@@ -3,7 +3,7 @@ import App from './App';
 import { Signup } from './views/Signup';
 import { Login } from './views/Login';
 import Market from './views/Market/Market';
-import MarketCreate from './views/MarketCreate/MarketCreate';
+import MarketCreate from './views/AddInventory/MarketCreate';
 import MarketItems from './views/Market/MarketItems';
 import MarketItemsDetails from './views/Market/Details/MarketItemsDetails';
 import MarketTypes from './views/Market/MarketTypes';

@@ -29,7 +29,7 @@ function App() {
           </Link>
         </nav>
       </div>
-      <section className="m-4 p-4">
+      <section className="m-4 p-4 bg-blue-100">
         <Outlet />
       </section>
     </>

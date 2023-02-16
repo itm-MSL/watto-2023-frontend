@@ -1,9 +1,11 @@
 import { Link, Outlet } from 'react-router-dom';
 import { Button } from '../../components/button';
+import { Header } from '../../components/header';
 
 const Market = () => {
   return (
     <>
+      <Header>Market</Header>
       <nav>
         <Link className="p-2" to={'/market/items'}>
           <Button> Items </Button>
