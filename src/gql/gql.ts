@@ -14,6 +14,9 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  */
 const documents = {
     "\n  mutation Login($username: String!, $password: String!) {\n    signin(username: $username, password: $password) {\n      successful\n      result {\n        token\n        user {\n          id\n          name\n        }\n      }\n      messages {\n        message\n      }\n    }\n  }\n": types.LoginDocument,
+    "\n  mutation ItemCreate(\n    $name: String!\n    $typeId: Int!\n    $modelId: Int!\n    $userId: Int!\n  ) {\n    itemCreate(\n      name: $name\n      typeId: $typeId\n      modelId: $modelId\n      userId: $userId\n    ) {\n      successful\n      result {\n        id\n        name\n        model {\n          id\n        }\n        type {\n          id\n        }\n        insertedAt\n      }\n    }\n  }\n": types.ItemCreateDocument,
+    "\n  mutation modelCreate($name: String!, $multiplier: Float!) {\n    modelCreate(name: $name, multiplier: $multiplier) {\n      successful\n      result {\n        id\n        name\n        multiplier\n        insertedAt\n      }\n    }\n  }\n": types.ModelCreateDocument,
+    "\n  mutation TypeCreate($name: String!, $indexPrice: Int!) {\n    typeCreate(name: $name, indexPrice: $indexPrice) {\n      successful\n      result {\n        id\n        name\n        indexPrice\n        insertedAt\n      }\n    }\n  }\n": types.TypeCreateDocument,
     "\n  query ItemList {\n    itemList {\n      id\n      name\n      model {\n        id\n      }\n      type {\n        id\n      }\n      price\n    }\n  }\n": types.ItemListDocument,
     "\n  query ItemById($id: Int!) {\n    itemById(id: $id) {\n      id\n      name\n      model {\n        id\n        name\n        multiplier\n      }\n      type {\n        id\n        name\n        indexPrice\n      }\n      price\n    }\n  }\n": types.ItemByIdDocument,
     "\n  query ModelList {\n    modelList {\n      id\n      name\n    }\n  }\n": types.ModelListDocument,
@@ -42,6 +45,18 @@ export function graphql(source: string): unknown;
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(source: "\n  mutation Login($username: String!, $password: String!) {\n    signin(username: $username, password: $password) {\n      successful\n      result {\n        token\n        user {\n          id\n          name\n        }\n      }\n      messages {\n        message\n      }\n    }\n  }\n"): (typeof documents)["\n  mutation Login($username: String!, $password: String!) {\n    signin(username: $username, password: $password) {\n      successful\n      result {\n        token\n        user {\n          id\n          name\n        }\n      }\n      messages {\n        message\n      }\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  mutation ItemCreate(\n    $name: String!\n    $typeId: Int!\n    $modelId: Int!\n    $userId: Int!\n  ) {\n    itemCreate(\n      name: $name\n      typeId: $typeId\n      modelId: $modelId\n      userId: $userId\n    ) {\n      successful\n      result {\n        id\n        name\n        model {\n          id\n        }\n        type {\n          id\n        }\n        insertedAt\n      }\n    }\n  }\n"): (typeof documents)["\n  mutation ItemCreate(\n    $name: String!\n    $typeId: Int!\n    $modelId: Int!\n    $userId: Int!\n  ) {\n    itemCreate(\n      name: $name\n      typeId: $typeId\n      modelId: $modelId\n      userId: $userId\n    ) {\n      successful\n      result {\n        id\n        name\n        model {\n          id\n        }\n        type {\n          id\n        }\n        insertedAt\n      }\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  mutation modelCreate($name: String!, $multiplier: Float!) {\n    modelCreate(name: $name, multiplier: $multiplier) {\n      successful\n      result {\n        id\n        name\n        multiplier\n        insertedAt\n      }\n    }\n  }\n"): (typeof documents)["\n  mutation modelCreate($name: String!, $multiplier: Float!) {\n    modelCreate(name: $name, multiplier: $multiplier) {\n      successful\n      result {\n        id\n        name\n        multiplier\n        insertedAt\n      }\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  mutation TypeCreate($name: String!, $indexPrice: Int!) {\n    typeCreate(name: $name, indexPrice: $indexPrice) {\n      successful\n      result {\n        id\n        name\n        indexPrice\n        insertedAt\n      }\n    }\n  }\n"): (typeof documents)["\n  mutation TypeCreate($name: String!, $indexPrice: Int!) {\n    typeCreate(name: $name, indexPrice: $indexPrice) {\n      successful\n      result {\n        id\n        name\n        indexPrice\n        insertedAt\n      }\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
