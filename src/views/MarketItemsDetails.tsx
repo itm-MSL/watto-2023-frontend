@@ -27,9 +27,10 @@ const MarketItemsDetails = () => {
   const { data, loading, error } = useQuery(ITEM_BY_ID, {
     variables: { id: Number(itemid) },
   });
+
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
-  console.log(data);
+
   return (
     <>
       <div className="px-4 bg-blue-100 shadow-md flex flex-col">

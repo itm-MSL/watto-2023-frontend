@@ -4,7 +4,7 @@ import MarketCreateItem from './MarketCreateItem';
 
 const MarketCreate = () => {
   return (
-    <div className="flex">
+    <div className="flex flex-wrap">
       <MarketCreateType />
       <MarketCreateModel />
       <MarketCreateItem />

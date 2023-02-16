@@ -20,7 +20,6 @@ const TYPE_CREATE = graphql(/* GraphQL */ `
 
 const MarketCreateType = () => {
   const [typeCreate, { data, loading, error }] = useMutation(TYPE_CREATE);
-  console.log(data);
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
@@ -35,7 +34,7 @@ const MarketCreateType = () => {
   };
 
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-3 mr-4">
       <SubHeader>New type:</SubHeader>
       <form onSubmit={onSubmit} className="flex flex-col gap-3">
         <Input label="Name" type="text" name="name"></Input>

@@ -16,7 +16,6 @@ const MarketTypes = () => {
   const { data, loading, error } = useQuery(TYPE_LIST);
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
-  console.log(data);
 
   return (
     <>

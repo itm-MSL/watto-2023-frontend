@@ -5,7 +5,7 @@ import { Link, Outlet } from 'react-router-dom';
 function App() {
   return (
     <>
-      <div className="flex flex-col m-4 p-4 bg-blue-500">
+      <div className="flex flex-col m-4 p-4 bg-blue-500 rounded-t-2xl">
         <Header> Watto's marketplace </Header>
         <nav>
           <Link to={'/signup'}>

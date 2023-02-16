@@ -24,7 +24,7 @@ const MarketItems = () => {
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
-  console.log(data);
+
   return (
     <>
       <SubHeader>All items:</SubHeader>
