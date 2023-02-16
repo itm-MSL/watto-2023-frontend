@@ -19,7 +19,7 @@ const MarketModels = () => {
 
   return (
     <>
-      <SubHeader>All models:</SubHeader>
+      <SubHeader>All models</SubHeader>
 
       <div className="p-2 bg-blue-100 grid grid-cols-2">
         <div>
