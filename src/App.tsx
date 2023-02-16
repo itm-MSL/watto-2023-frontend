@@ -6,30 +6,32 @@ function App() {
   return (
     <>
       <div className="flex flex-col m-4 p-4 bg-blue-500 rounded-t-2xl">
-        <Header> Watto's marketplace </Header>
+        <h1 className="text-4xl text-white font-semibold m-4">
+          Watto's marketplace!
+        </h1>
         <nav>
-          <Link to={'/signup'}>
+          <Link className="m-2" to={'/signup'}>
             <Button> Signup </Button>
           </Link>
 
-          <Link to={'/login'}>
+          <Link className="m-2" to={'/login'}>
             <Button> Login </Button>
           </Link>
 
-          <Link to={'/market'}>
+          <Link className="m-2" to={'/market'}>
             <Button> Market</Button>
           </Link>
 
-          <Link to={'/market/create'}>
+          <Link className="m-2" to={'/market/create'}>
             <Button> Add inventory </Button>
           </Link>
 
-          <Link to={'/profile'}>
+          <Link className="m-2" to={'/profile'}>
             <Button> My profile </Button>
           </Link>
         </nav>
       </div>
-      <section className="m-4 p-4 bg-blue-100">
+      <section className="m-4 p-4 bg-blue-100 ">
         <Outlet />
       </section>
     </>

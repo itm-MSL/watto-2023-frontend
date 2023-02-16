@@ -2,9 +2,20 @@ import { SubHeader } from '../../components/subheader';
 import { Input } from '../../components/input';
 import { Button } from '../../components/button';
 import { graphql } from '../../gql';
-import { useMutation } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import SelectModel from './SelectModel';
 import SelectType from './SelectType';
+
+const ME = graphql(/* GraphQL */ `
+  query Me {
+    me {
+      id
+      name
+      username
+      credits
+    }
+  }
+`);
 
 const ITEM_CREATE = graphql(/* GraphQL */ `
   mutation ItemCreate(
@@ -35,6 +46,10 @@ const ITEM_CREATE = graphql(/* GraphQL */ `
   }
 `);
 const MarketCreateItem = () => {
+  const { data: meData, loading: meLoading, error: meError } = useQuery(ME);
+  if (meLoading) return <div>Loading...</div>;
+  if (meError) return <div>Error: {meError.message}</div>;
+
   const [itemCreate, { data, loading, error }] = useMutation(ITEM_CREATE);
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -42,7 +57,7 @@ const MarketCreateItem = () => {
     const name = data.get('name') as string;
     const typeId = data.get('typeId');
     const modelId = data.get('modelId');
-    const userId = data.get('userId');
+    const userId = meData?.me?.id;
 
     itemCreate({
       variables: {
@@ -58,9 +73,14 @@ const MarketCreateItem = () => {
       <SubHeader>Item:</SubHeader>
       <form onSubmit={onSubmit} className="flex flex-col gap-3">
         <Input label="Name" type="text" name="name"></Input>
-        <SelectModel name="modelId" />
-        <SelectType name="typeId" />
-        <Input label="UserId" type="number" name="userId"></Input>
+        <div className="grid grid-cols-2">
+          <h1>Model</h1>
+          <h1>Type</h1>
+        </div>
+        <div className="grid grid-cols-2">
+          <SelectModel name="modelId" />
+          <SelectType name="typeId" />
+        </div>
         <Button type="submit">Create</Button>
       </form>
 
