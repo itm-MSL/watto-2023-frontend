@@ -1,6 +1,8 @@
 import { useQuery } from '@apollo/client';
 import { graphql } from '../../../gql';
 import { useParams } from 'react-router-dom';
+import { BuyButton } from '../../../components/buyButton';
+import MarketItemsDetailsBuy from './MarketItemsDetailsBuy';
 
 const ITEM_BY_ID = graphql(/* GraphQL */ `
   query ItemById($id: Int!) {
@@ -33,6 +35,7 @@ const MarketItemsDetails = () => {
 
   return (
     <div className="px-4 bg-blue-50 shadow-md flex flex-col">
+      <MarketItemsDetailsBuy />
       <div className="bg-blue-200 p-2 m-2 rounded-xl">
         <p className="font-bold">Price: {data?.itemById.price}</p>
         <h1 className="text-xl">Name: {data?.itemById?.name}</h1>
