@@ -59,7 +59,7 @@ export const Login = () => {
       {loading && <div className="animate-spin ">.</div>}
       {error && <div> {error.message} </div>}
       {data?.signin?.successful && !error && (
-        <div> Welcome {data.signin?.result?.user?.name}! </div>
+        <div> Welcome back {data.signin?.result?.user?.name}! </div>
       )}
     </div>
   );

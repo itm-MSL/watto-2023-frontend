@@ -23,7 +23,12 @@ const MarketItems = () => {
   const { data, loading, error } = useQuery(ITEM_LIST);
 
   if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error.message}</div>;
+  if (error)
+    return (
+      <div>
+        Error: {error.message} {(window.location.href = '/login')}
+      </div>
+    );
 
   return (
     <>

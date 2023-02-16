@@ -1,6 +1,10 @@
-import { Header } from './components/header';
 import { Button } from './components/button';
 import { Link, Outlet } from 'react-router-dom';
+
+const handleOnLogout = () => {
+  localStorage.removeItem('token');
+  window.location.reload();
+};
 
 function App() {
   return (
@@ -28,6 +32,10 @@ function App() {
 
           <Link className="m-2" to={'/profile'}>
             <Button> My profile </Button>
+          </Link>
+
+          <Link className="m-2" to={'/login'}>
+            <Button onClick={handleOnLogout}>Logout</Button>
           </Link>
         </nav>
       </div>

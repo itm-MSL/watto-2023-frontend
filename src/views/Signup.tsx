@@ -56,10 +56,8 @@ export const Signup = () => {
       {error && <div> {error.message} </div>}
       {data && !error && (
         <div>
-          {' '}
-          WELCOME beep boop {JSON.stringify(
-            data.signup?.result?.user?.name,
-          )}{' '}
+          Welcome to the marketplace
+          {JSON.stringify(data.signup?.result?.user?.name)}
         </div>
       )}
     </div>
