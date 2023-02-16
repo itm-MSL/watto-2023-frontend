@@ -15,10 +15,6 @@ const USER_BUY = graphql(/* GraphQL */ `
           id
           name
         }
-        item {
-          id
-          name
-        }
       }
     }
   }
@@ -48,7 +44,6 @@ const MarketItemsDetailsBuy = ({ itemid }: { itemid: number }) => {
       {data && !error && (
         <div>
           Yay {JSON.stringify(data.userBuy?.result?.buyer?.name)}! You bought{' '}
-          {JSON.stringify(data.userBuy?.result?.item?.name)}
           from: {''}
           {JSON.stringify(data.userBuy?.result?.seller?.name)}
         </div>

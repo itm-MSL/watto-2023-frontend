@@ -19,15 +19,15 @@ const documents = {
     "\n  mutation TypeCreate($name: String!, $indexPrice: Int!) {\n    typeCreate(name: $name, indexPrice: $indexPrice) {\n      successful\n      result {\n        id\n        name\n        indexPrice\n        insertedAt\n      }\n    }\n  }\n": types.TypeCreateDocument,
     "\n  query ModelList {\n    modelList {\n      id\n      name\n    }\n  }\n": types.ModelListDocument,
     "\n  query TypeList {\n    typeList {\n      id\n      name\n    }\n  }\n": types.TypeListDocument,
-    "\n  mutation Login($username: String!, $password: String!) {\n    signin(username: $username, password: $password) {\n      successful\n      result {\n        token\n        user {\n          id\n          name\n        }\n      }\n      messages {\n        message\n      }\n    }\n  }\n": types.LoginDocument,
+    "\n  mutation Login($username: String!, $password: String!) {\n    signin(username: $username, password: $password) {\n      successful\n      result {\n        token\n      }\n      messages {\n        message\n      }\n    }\n  }\n": types.LoginDocument,
     "\n  query ItemById($id: Int!) {\n    itemById(id: $id) {\n      id\n      name\n      model {\n        id\n        name\n        multiplier\n      }\n      type {\n        id\n        name\n        indexPrice\n      }\n      price\n    }\n  }\n": types.ItemByIdDocument,
-    "\n  mutation UserBuy($itemId: Int!) {\n    userBuy(itemId: $itemId) {\n      successful\n      result {\n        buyer {\n          id\n          name\n        }\n        seller {\n          id\n          name\n        }\n        item {\n          id\n          name\n        }\n      }\n    }\n  }\n": types.UserBuyDocument,
+    "\n  mutation UserBuy($itemId: Int!) {\n    userBuy(itemId: $itemId) {\n      successful\n      result {\n        buyer {\n          id\n          name\n        }\n        seller {\n          id\n          name\n        }\n      }\n    }\n  }\n": types.UserBuyDocument,
     "\n  query ModelById($id: Int!) {\n    modelById(id: $id) {\n      id\n      name\n      multiplier\n    }\n  }\n": types.ModelByIdDocument,
     "\n  query TypeById($id: Int!) {\n    typeById(id: $id) {\n      id\n      name\n      indexPrice\n    }\n  }\n": types.TypeByIdDocument,
     "\n  query ItemList {\n    itemList {\n      id\n      name\n      model {\n        id\n      }\n      type {\n        id\n      }\n      price\n    }\n  }\n": types.ItemListDocument,
     "\n  mutation UserCreditsUpdate($userId: Int!, $credits: Float!) {\n    userCreditsUpdate(userId: $userId, credits: $credits) {\n      successful\n      result {\n        id\n        credits\n      }\n    }\n  }\n": types.UserCreditsUpdateDocument,
     "\n  query ItemsByUserId($userId: Int!) {\n    itemsByUserId(userId: $userId) {\n      id\n      name\n      model {\n        id\n      }\n      type {\n        id\n      }\n      price\n    }\n  }\n": types.ItemsByUserIdDocument,
-    "\n  mutation Signup($username: String!, $password: String!) {\n    signup(username: $username, password: $password) {\n      result {\n        token\n        user {\n          id\n          name\n        }\n      }\n      messages {\n        message\n      }\n    }\n  }\n": types.SignupDocument,
+    "\n  mutation Signup(\n    $username: String!\n    $password: String!\n    $name: String!\n    $credits: Float!\n  ) {\n    signup(\n      username: $username\n      password: $password\n      name: $name\n      credits: $credits\n    ) {\n      result {\n        token\n      }\n      messages {\n        message\n      }\n    }\n  }\n": types.SignupDocument,
 };
 
 /**
@@ -71,7 +71,7 @@ export function graphql(source: "\n  query TypeList {\n    typeList {\n      id\
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  mutation Login($username: String!, $password: String!) {\n    signin(username: $username, password: $password) {\n      successful\n      result {\n        token\n        user {\n          id\n          name\n        }\n      }\n      messages {\n        message\n      }\n    }\n  }\n"): (typeof documents)["\n  mutation Login($username: String!, $password: String!) {\n    signin(username: $username, password: $password) {\n      successful\n      result {\n        token\n        user {\n          id\n          name\n        }\n      }\n      messages {\n        message\n      }\n    }\n  }\n"];
+export function graphql(source: "\n  mutation Login($username: String!, $password: String!) {\n    signin(username: $username, password: $password) {\n      successful\n      result {\n        token\n      }\n      messages {\n        message\n      }\n    }\n  }\n"): (typeof documents)["\n  mutation Login($username: String!, $password: String!) {\n    signin(username: $username, password: $password) {\n      successful\n      result {\n        token\n      }\n      messages {\n        message\n      }\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
@@ -79,7 +79,7 @@ export function graphql(source: "\n  query ItemById($id: Int!) {\n    itemById(i
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  mutation UserBuy($itemId: Int!) {\n    userBuy(itemId: $itemId) {\n      successful\n      result {\n        buyer {\n          id\n          name\n        }\n        seller {\n          id\n          name\n        }\n        item {\n          id\n          name\n        }\n      }\n    }\n  }\n"): (typeof documents)["\n  mutation UserBuy($itemId: Int!) {\n    userBuy(itemId: $itemId) {\n      successful\n      result {\n        buyer {\n          id\n          name\n        }\n        seller {\n          id\n          name\n        }\n        item {\n          id\n          name\n        }\n      }\n    }\n  }\n"];
+export function graphql(source: "\n  mutation UserBuy($itemId: Int!) {\n    userBuy(itemId: $itemId) {\n      successful\n      result {\n        buyer {\n          id\n          name\n        }\n        seller {\n          id\n          name\n        }\n      }\n    }\n  }\n"): (typeof documents)["\n  mutation UserBuy($itemId: Int!) {\n    userBuy(itemId: $itemId) {\n      successful\n      result {\n        buyer {\n          id\n          name\n        }\n        seller {\n          id\n          name\n        }\n      }\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
@@ -103,7 +103,7 @@ export function graphql(source: "\n  query ItemsByUserId($userId: Int!) {\n    i
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  mutation Signup($username: String!, $password: String!) {\n    signup(username: $username, password: $password) {\n      result {\n        token\n        user {\n          id\n          name\n        }\n      }\n      messages {\n        message\n      }\n    }\n  }\n"): (typeof documents)["\n  mutation Signup($username: String!, $password: String!) {\n    signup(username: $username, password: $password) {\n      result {\n        token\n        user {\n          id\n          name\n        }\n      }\n      messages {\n        message\n      }\n    }\n  }\n"];
+export function graphql(source: "\n  mutation Signup(\n    $username: String!\n    $password: String!\n    $name: String!\n    $credits: Float!\n  ) {\n    signup(\n      username: $username\n      password: $password\n      name: $name\n      credits: $credits\n    ) {\n      result {\n        token\n      }\n      messages {\n        message\n      }\n    }\n  }\n"): (typeof documents)["\n  mutation Signup(\n    $username: String!\n    $password: String!\n    $name: String!\n    $credits: Float!\n  ) {\n    signup(\n      username: $username\n      password: $password\n      name: $name\n      credits: $credits\n    ) {\n      result {\n        token\n      }\n      messages {\n        message\n      }\n    }\n  }\n"];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};

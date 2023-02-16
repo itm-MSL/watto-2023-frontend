@@ -6,14 +6,20 @@ import { Button } from '../components/button';
 import { Input } from '../components/input';
 
 const SIGNUP_MUTATION = graphql(/* GraphQL */ `
-  mutation Signup($username: String!, $password: String!) {
-    signup(username: $username, password: $password) {
+  mutation Signup(
+    $username: String!
+    $password: String!
+    $name: String!
+    $credits: Float!
+  ) {
+    signup(
+      username: $username
+      password: $password
+      name: $name
+      credits: $credits
+    ) {
       result {
         token
-        user {
-          id
-          name
-        }
       }
       messages {
         message
@@ -31,13 +37,18 @@ export const Signup = () => {
     const attrs = {
       username: data.get('username') as string,
       password: data.get('password') as string,
-      name: data.get('nameOfOwner') as string,
+      name: data.get('name') as string,
       credits: data.get('credits'),
     };
     if (!attrs.username || !attrs.password) return;
 
     signup({
-      variables: attrs,
+      variables: {
+        username: attrs.username,
+        password: attrs.password,
+        name: attrs.name,
+        credits: Number(attrs.credits),
+      },
     });
   };
 
@@ -47,7 +58,7 @@ export const Signup = () => {
       <form onSubmit={onSubmit} className="flex flex-col gap-3">
         <Input label="Username" type="text" name="username"></Input>
         <Input label="password" type="password" name="password"></Input>
-        <Input label="Name" type="text" name="nameOfOwner"></Input>
+        <Input label="Name" type="text" name="name"></Input>
         <Input label="Credits" type="number" name="credits"></Input>
         <Button type="submit">Signup</Button>
       </form>
