@@ -8,11 +8,9 @@ const USER_BUY = graphql(/* GraphQL */ `
       successful
       result {
         buyer {
-          id
           name
         }
         seller {
-          id
           name
         }
       }
@@ -22,14 +20,12 @@ const USER_BUY = graphql(/* GraphQL */ `
 
 const MarketItemsDetailsBuy = ({ itemid }: { itemid: number }) => {
   const [userBuy, { data, loading, error }] = useMutation(USER_BUY);
+
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const data = new FormData(e.currentTarget);
-    const itemId = { itemid };
-
     userBuy({
       variables: {
-        itemId: Number(itemId),
+        itemId: itemid,
       },
     });
   };
