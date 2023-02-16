@@ -1,8 +1,7 @@
 import { useQuery } from '@apollo/client';
-import { Link, Outlet } from 'react-router-dom';
 import { SubHeader } from '../components/subheader';
 import { graphql } from '../gql';
-
+import ProfileCreditsUpdate from './ProfileCreditsUpdate';
 const ME = graphql(/* GraphQL */ `
   query Me {
     me {
@@ -31,15 +30,7 @@ const Profile = () => {
           <p>Name: {data?.me?.name} </p>
           <p>Credits: {data?.me?.credits}</p>
         </div>
-      </div>
-
-      <SubHeader>Add Credits</SubHeader>
-
-      <div className="p-2 bg-green-50 grid grid-cols-2">
-        <div className="grid">
-          <label>Credits to add: </label>
-          <input type="number" />
-        </div>
+        <ProfileCreditsUpdate />
       </div>
     </>
   );
