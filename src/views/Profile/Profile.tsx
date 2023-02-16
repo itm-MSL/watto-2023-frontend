@@ -1,6 +1,6 @@
 import { useQuery } from '@apollo/client';
-import { SubHeader } from '../components/subheader';
-import { graphql } from '../gql';
+import { SubHeader } from '../../components/subheader';
+import { graphql } from '../../gql';
 import ProfileCreditsUpdate from './ProfileCreditsUpdate';
 const ME = graphql(/* GraphQL */ `
   query Me {

@@ -1,5 +1,5 @@
 import { Link, Outlet } from 'react-router-dom';
-import { Button } from '../components/button';
+import { Button } from '../../components/button';
 
 const Market = () => {
   return (

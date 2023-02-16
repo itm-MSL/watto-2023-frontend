@@ -1,7 +1,7 @@
-import { SubHeader } from '../components/subheader';
-import { Input } from '../components/input';
-import { Button } from '../components/button';
-import { graphql } from '../gql';
+import { SubHeader } from '../../components/subheader';
+import { Input } from '../../components/input';
+import { Button } from '../../components/button';
+import { graphql } from '../../gql';
 import { useMutation } from '@apollo/client';
 
 const ITEM_CREATE = graphql(/* GraphQL */ `

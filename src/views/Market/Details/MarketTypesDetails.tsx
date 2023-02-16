@@ -1,5 +1,5 @@
 import { useQuery } from '@apollo/client';
-import { graphql } from '../gql';
+import { graphql } from '../../../gql';
 import { useParams } from 'react-router-dom';
 
 const TYPE_BY_ID = graphql(/* GraphQL */ `

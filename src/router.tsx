@@ -2,15 +2,15 @@ import { createBrowserRouter } from 'react-router-dom';
 import App from './App';
 import { Signup } from './views/Signup';
 import { Login } from './views/Login';
-import Market from './views/Market';
-import MarketCreate from './views/MarketCreate';
-import MarketItems from './views/MarketItems';
-import MarketItemsDetails from './views/MarketItemsDetails';
-import MarketTypes from './views/MarketTypes';
-import MarketTypesDetails from './views/MarketTypesDetails';
-import MarketModels from './views/MarketModels';
-import MarketModelsDetails from './views/MarketModelsDetails';
-import Profile from './views/Profile';
+import Market from './views/Market/Market';
+import MarketCreate from './views/MarketCreate/MarketCreate';
+import MarketItems from './views/Market/MarketItems';
+import MarketItemsDetails from './views/Market/Details/MarketItemsDetails';
+import MarketTypes from './views/Market/MarketTypes';
+import MarketTypesDetails from './views/Market/Details/MarketTypesDetails';
+import MarketModels from './views/Market/MarketModels';
+import MarketModelsDetails from './views/Market/Details/MarketModelsDetails';
+import Profile from './views/Profile/Profile';
 
 export const router = createBrowserRouter([
   {
