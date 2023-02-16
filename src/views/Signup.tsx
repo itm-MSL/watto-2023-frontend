@@ -20,6 +20,10 @@ const SIGNUP_MUTATION = graphql(/* GraphQL */ `
     ) {
       result {
         token
+        user {
+          id
+          name
+        }
       }
       messages {
         message
@@ -67,7 +71,7 @@ export const Signup = () => {
       {error && <div> {error.message} </div>}
       {data && !error && (
         <div>
-          Welcome to the marketplace
+          Welcome to the marketplace{' '}
           {JSON.stringify(data.signup?.result?.user?.name)}
         </div>
       )}

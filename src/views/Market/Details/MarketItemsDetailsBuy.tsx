@@ -26,6 +26,7 @@ const MarketItemsDetailsBuy = ({ itemid }: { itemid: number }) => {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
     const itemId = { itemid };
+
     userBuy({
       variables: {
         itemId: Number(itemId),
@@ -34,11 +35,13 @@ const MarketItemsDetailsBuy = ({ itemid }: { itemid: number }) => {
   };
 
   return (
-    <form
-      onSubmit={onSubmit}
-      className="flex flex-col gap-3 bg-blue-50 m-2 p-2"
-    >
-      <BuyButton>Buy</BuyButton>
+    <>
+      <form
+        onSubmit={onSubmit}
+        className="flex flex-col gap-3 bg-blue-50 m-2 p-2"
+      >
+        <BuyButton type="submit">Buy</BuyButton>
+      </form>
       {loading && <div className="animate-spin ">.</div>}
       {error && <div> {error.message} </div>}
       {data && !error && (
@@ -48,7 +51,7 @@ const MarketItemsDetailsBuy = ({ itemid }: { itemid: number }) => {
           {JSON.stringify(data.userBuy?.result?.seller?.name)}
         </div>
       )}
-    </form>
+    </>
   );
 };
 

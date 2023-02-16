@@ -10,19 +10,23 @@ const ITEMS_BY_USER_ID = graphql(/* GraphQL */ `
       name
       model {
         id
+        name
+        multiplier
       }
       type {
         id
+        name
+        indexPrice
       }
       price
     }
   }
 `);
 
-const ProfileMyItems = () => {
+const ProfileMyItems = ({ userId }: { userId: number }) => {
   const { data, loading, error } = useQuery(ITEMS_BY_USER_ID, {
     variables: {
-      userId: 1,
+      userId: userId,
     },
   });
   if (loading) return <div>Loading...</div>;

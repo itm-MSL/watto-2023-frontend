@@ -11,6 +11,10 @@ const LOGIN_MUTATION = graphql(/* GraphQL */ `
       successful
       result {
         token
+        user {
+          id
+          name
+        }
       }
       messages {
         message
