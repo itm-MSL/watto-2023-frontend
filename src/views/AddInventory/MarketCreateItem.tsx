@@ -6,51 +6,12 @@ import { useMutation, useQuery } from '@apollo/client';
 import SelectModel from './SelectModel';
 import SelectType from './SelectType';
 
-const ME = graphql(/* GraphQL */ `
-  query Me {
-    me {
-      id
-      name
-      username
-      credits
-    }
-  }
-`);
-
-const ITEM_CREATE = graphql(/* GraphQL */ `
-  mutation ItemCreate(
-    $name: String!
-    $typeId: Int!
-    $modelId: Int!
-    $userId: Int!
-  ) {
-    itemCreate(
-      name: $name
-      typeId: $typeId
-      modelId: $modelId
-      userId: $userId
-    ) {
-      successful
-      result {
-        id
-        name
-        model {
-          id
-        }
-        type {
-          id
-        }
-        insertedAt
-      }
-    }
-  }
-`);
 const MarketCreateItem = () => {
+  const [itemCreate, { data, loading, error }] = useMutation(ITEM_CREATE);
   const { data: meData, loading: meLoading, error: meError } = useQuery(ME);
   if (meLoading) return <div>Loading...</div>;
   if (meError) return <div>Error: {meError.message}</div>;
 
-  const [itemCreate, { data, loading, error }] = useMutation(ITEM_CREATE);
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
@@ -96,3 +57,42 @@ const MarketCreateItem = () => {
   );
 };
 export default MarketCreateItem;
+const ME = graphql(/* GraphQL */ `
+  query Me {
+    me {
+      id
+      name
+      username
+      credits
+    }
+  }
+`);
+
+const ITEM_CREATE = graphql(/* GraphQL */ `
+  mutation ItemCreate(
+    $name: String!
+    $typeId: Int!
+    $modelId: Int!
+    $userId: Int!
+  ) {
+    itemCreate(
+      name: $name
+      typeId: $typeId
+      modelId: $modelId
+      userId: $userId
+    ) {
+      successful
+      result {
+        id
+        name
+        model {
+          id
+        }
+        type {
+          id
+        }
+        insertedAt
+      }
+    }
+  }
+`);
