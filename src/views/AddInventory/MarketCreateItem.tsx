@@ -3,6 +3,8 @@ import { Input } from '../../components/input';
 import { Button } from '../../components/button';
 import { graphql } from '../../gql';
 import { useMutation } from '@apollo/client';
+import SelectModel from './SelectModel';
+import SelectType from './SelectType';
 
 const ITEM_CREATE = graphql(/* GraphQL */ `
   mutation ItemCreate(
@@ -41,6 +43,7 @@ const MarketCreateItem = () => {
     const typeId = data.get('typeId');
     const modelId = data.get('modelId');
     const userId = data.get('userId');
+
     itemCreate({
       variables: {
         name: name,
@@ -50,14 +53,13 @@ const MarketCreateItem = () => {
       },
     });
   };
-
   return (
     <div className="flex flex-col gap-3 mr-4">
       <SubHeader>Item:</SubHeader>
       <form onSubmit={onSubmit} className="flex flex-col gap-3">
         <Input label="Name" type="text" name="name"></Input>
-        <Input label="TypeId" type="number" name="typeId"></Input>
-        <Input label="ModelId" type="number" name="modelId"></Input>
+        <SelectModel name="modelId" />
+        <SelectType name="typeId" />
         <Input label="UserId" type="number" name="userId"></Input>
         <Button type="submit">Create</Button>
       </form>
