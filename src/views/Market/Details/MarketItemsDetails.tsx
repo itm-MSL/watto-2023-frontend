@@ -31,7 +31,7 @@ const MarketItemsDetails = () => {
     variables: { id: Number(itemid) },
   });
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <div className="animate-spin">.</div>;
   if (error) return <div>Error: {error.message}</div>;
 
   return (

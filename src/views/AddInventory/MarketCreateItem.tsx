@@ -2,15 +2,25 @@ import { SubHeader } from '../../components/subheader';
 import { Input } from '../../components/input';
 import { Button } from '../../components/button';
 import { graphql } from '../../gql';
-import { useMutation, useQuery } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import SelectModel from './SelectModel';
 import SelectType from './SelectType';
 
+const ITEM_CREATE = graphql(/* GraphQL */ `
+  mutation ItemCreate($name: String!, $typeId: Int!, $modelId: Int!) {
+    itemCreate(name: $name, typeId: $typeId, modelId: $modelId) {
+      successful
+      result {
+        id
+        name
+        insertedAt
+      }
+    }
+  }
+`);
+
 const MarketCreateItem = () => {
   const [itemCreate, { data, loading, error }] = useMutation(ITEM_CREATE);
-  const { data: meData, loading: meLoading, error: meError } = useQuery(ME);
-  if (meLoading) return <div>Loading...</div>;
-  if (meError) return <div>Error: {meError.message}</div>;
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -18,14 +28,12 @@ const MarketCreateItem = () => {
     const name = data.get('name') as string;
     const typeId = data.get('typeId');
     const modelId = data.get('modelId');
-    const userId = meData?.me?.id;
 
     itemCreate({
       variables: {
         name: name,
         typeId: Number(typeId),
         modelId: Number(modelId),
-        userId: Number(userId),
       },
     });
   };
@@ -57,42 +65,3 @@ const MarketCreateItem = () => {
   );
 };
 export default MarketCreateItem;
-const ME = graphql(/* GraphQL */ `
-  query Me {
-    me {
-      id
-      name
-      username
-      credits
-    }
-  }
-`);
-
-const ITEM_CREATE = graphql(/* GraphQL */ `
-  mutation ItemCreate(
-    $name: String!
-    $typeId: Int!
-    $modelId: Int!
-    $userId: Int!
-  ) {
-    itemCreate(
-      name: $name
-      typeId: $typeId
-      modelId: $modelId
-      userId: $userId
-    ) {
-      successful
-      result {
-        id
-        name
-        model {
-          id
-        }
-        type {
-          id
-        }
-        insertedAt
-      }
-    }
-  }
-`);

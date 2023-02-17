@@ -1,4 +1,4 @@
-import { Button } from './components/button';
+import { NavButton } from './components/navButton';
 import { Link, Outlet } from 'react-router-dom';
 
 const handleOnLogout = () => {
@@ -9,37 +9,37 @@ const handleOnLogout = () => {
 function App() {
   return (
     <>
-      <div className="flex flex-col m-4 p-4 bg-blue-500 rounded-t-2xl">
+      <div className="flex flex-col mx-4 mt-4 px-4 bg-amber-700 rounded-t-2xl">
         <h1 className="text-4xl text-white font-semibold m-4">
           Watto's marketplace!
         </h1>
         <nav>
           <Link className="m-2" to={'/signup'}>
-            <Button> Signup </Button>
+            <NavButton> Signup </NavButton>
           </Link>
 
           <Link className="m-2" to={'/login'}>
-            <Button> Login </Button>
+            <NavButton> Login </NavButton>
           </Link>
 
           <Link className="m-2" to={'/market'}>
-            <Button> Market</Button>
+            <NavButton> Market</NavButton>
           </Link>
 
           <Link className="m-2" to={'/market/create'}>
-            <Button> Add inventory </Button>
+            <NavButton> Add inventory </NavButton>
           </Link>
 
           <Link className="m-2" to={'/profile'}>
-            <Button> My profile </Button>
+            <NavButton> My profile </NavButton>
           </Link>
 
           <Link className="m-2" to={'/login'}>
-            <Button onClick={handleOnLogout}>Logout</Button>
+            <NavButton onClick={handleOnLogout}>Logout</NavButton>
           </Link>
         </nav>
       </div>
-      <section className="m-4 p-4 bg-blue-100 ">
+      <section className="mx-4 p-4 bg-blue-100">
         <Outlet />
       </section>
     </>

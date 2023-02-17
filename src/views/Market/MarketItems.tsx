@@ -42,7 +42,7 @@ export const mapModelToColor = (modelName?: string) => {
 const MarketItems = () => {
   const { data, loading, error } = useQuery(ITEM_LIST);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <div className="animate-spin">.</div>;
   if (error)
     return (
       <div>
@@ -60,7 +60,7 @@ const MarketItems = () => {
               <Link
                 to={'/market/items/' + item.id}
                 className={
-                  'flex justify-between hover:scale-105 active:scale-105 border-2 rounded-md shadow-md py-2 my-2 mx-4 px-4 ' +
+                  'flex justify-between hover:scale-105 active:scale-105 border-2 rounded-md shadow-md py-2 my-2 mx-4 px-4  ' +
                   mapModelToColor(item?.model?.name?.toString())
                 }
               >

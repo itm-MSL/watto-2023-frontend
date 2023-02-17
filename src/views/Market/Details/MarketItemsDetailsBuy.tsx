@@ -26,7 +26,7 @@ const USER_BUY = graphql(/* GraphQL */ `
 
 const MarketItemsDetailsBuy = ({ itemid }: { itemid: number }) => {
   const [userBuy, { data, loading, error }] = useMutation(USER_BUY, {
-    refetchQueries: ['ItemList'],
+    refetchQueries: ['ItemList', 'ItemsByUserId'],
   });
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -46,8 +46,8 @@ const MarketItemsDetailsBuy = ({ itemid }: { itemid: number }) => {
       >
         <BuyButton type="submit">Buy</BuyButton>
       </form>
-      <div className="text-center pt-2">
-        {loading && <div className="animate-spin ">.</div>}
+      <div className="text-center pb-4">
+        {loading && <div className="animate-spin">.</div>}
         {error && <div> {error.message} </div>}
         {!data?.userBuy?.successful && (
           <div>

@@ -22,7 +22,7 @@ const MarketTypesDetails = () => {
 
   return (
     <div className="px-4 bg-blue-50 shadow-md flex flex-col">
-      <div className="bg-blue-200 p-2 m-2 rounded-xl">
+      <div className="bg-teal-100 p-2 m-2 rounded-xl">
         <h1 className="text-xl">Name: {data?.typeById?.name}</h1>
         <p>Id: {data?.typeById?.id}</p>
         <p>IndexPrice: {data?.typeById?.indexPrice}</p>
