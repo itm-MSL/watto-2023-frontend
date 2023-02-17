@@ -35,6 +35,12 @@ const MarketItemsDetailsBuy = ({ itemid }: { itemid: number }) => {
 
   return (
     <>
+      <form
+        onSubmit={onSubmit}
+        className="flex flex-col gap-3 bg-blue-50 m-2 p-2"
+      >
+        <BuyButton type="submit">Buy</BuyButton>
+      </form>
       <div className="text-center pt-2">
         {loading && <div className="animate-spin ">.</div>}
         {error && <div> {error.message} </div>}
@@ -46,12 +52,6 @@ const MarketItemsDetailsBuy = ({ itemid }: { itemid: number }) => {
           </div>
         )}
       </div>
-      <form
-        onSubmit={onSubmit}
-        className="flex flex-col gap-3 bg-blue-50 m-2 p-2"
-      >
-        <BuyButton type="submit">Buy</BuyButton>
-      </form>
     </>
   );
 };

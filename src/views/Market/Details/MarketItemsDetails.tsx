@@ -3,6 +3,7 @@ import { graphql } from '../../../gql';
 import { useParams } from 'react-router-dom';
 import { BuyButton } from '../../../components/buyButton';
 import MarketItemsDetailsBuy from './MarketItemsDetailsBuy';
+import { SubHeader } from '../../../components/subheader';
 
 const ITEM_BY_ID = graphql(/* GraphQL */ `
   query ItemById($id: Int!) {
@@ -35,7 +36,7 @@ const MarketItemsDetails = () => {
 
   return (
     <div className="px-4 bg-blue-50 shadow-md flex flex-col">
-      <MarketItemsDetailsBuy itemid={Number(data?.itemById.id)} />
+      <SubHeader>Item details</SubHeader>
       <div className="bg-blue-200 p-2 m-2 rounded-xl">
         <p className="font-bold">
           Price: {Number(data?.itemById.price).toFixed(2)}
@@ -47,6 +48,7 @@ const MarketItemsDetails = () => {
         <h1 className="text-xl">Type: {data?.itemById?.type.name}</h1>
         <p>Id: {data?.itemById?.type.id}</p>
       </div>
+      <MarketItemsDetailsBuy itemid={Number(data?.itemById.id)} />
     </div>
   );
 };
