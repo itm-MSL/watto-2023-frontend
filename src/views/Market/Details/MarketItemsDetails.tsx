@@ -1,9 +1,9 @@
 import { useQuery } from '@apollo/client';
 import { graphql } from '../../../gql';
 import { useParams } from 'react-router-dom';
-import { BuyButton } from '../../../components/buyButton';
 import MarketItemsDetailsBuy from './MarketItemsDetailsBuy';
 import { SubHeader } from '../../../components/subheader';
+import { mapModelToColor } from '../MarketItems';
 
 const ITEM_BY_ID = graphql(/* GraphQL */ `
   query ItemById($id: Int!) {
@@ -37,7 +37,12 @@ const MarketItemsDetails = () => {
   return (
     <div className="px-4 bg-blue-50 shadow-md flex flex-col">
       <SubHeader>Item details</SubHeader>
-      <div className="bg-blue-200 p-2 m-2 rounded-xl">
+      <div
+        className={
+          'bg-blue-100 p-2 m-2 rounded-xl ' +
+          mapModelToColor(data?.itemById?.model?.name?.toString())
+        }
+      >
         <p className="font-bold">
           Price: {Number(data?.itemById.price).toFixed(2)}
         </p>

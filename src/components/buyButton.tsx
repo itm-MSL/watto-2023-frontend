@@ -7,7 +7,7 @@ type ButtonProps = {
 export const BuyButton = ({ children, ...rest }: ButtonProps) => {
   return (
     <button
-      className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-2 mx-2 my-4 rounded-xl"
+      className="text-xl border-2 border-green-500 hover:border-green-600 bg-green-200 text-black hover:text-green-600 font-semibold py-2 px-2 mx-2 my-4 rounded-xl"
       {...rest}
     >
       {children}
