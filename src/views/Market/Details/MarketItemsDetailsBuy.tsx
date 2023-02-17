@@ -6,6 +6,9 @@ const USER_BUY = graphql(/* GraphQL */ `
   mutation UserBuy($itemId: Int!) {
     userBuy(itemId: $itemId) {
       successful
+      messages {
+        message
+      }
       result {
         buyer {
           name
@@ -22,7 +25,9 @@ const USER_BUY = graphql(/* GraphQL */ `
 `);
 
 const MarketItemsDetailsBuy = ({ itemid }: { itemid: number }) => {
-  const [userBuy, { data, loading, error }] = useMutation(USER_BUY);
+  const [userBuy, { data, loading, error }] = useMutation(USER_BUY, {
+    refetchQueries: ['ItemList'],
+  });
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -44,7 +49,15 @@ const MarketItemsDetailsBuy = ({ itemid }: { itemid: number }) => {
       <div className="text-center pt-2">
         {loading && <div className="animate-spin ">.</div>}
         {error && <div> {error.message} </div>}
-        {data && !error && (
+        {!data?.userBuy?.successful && (
+          <div>
+            {' '}
+            {data?.userBuy?.messages?.map((msg) => (
+              <div>{msg?.message}</div>
+            ))}{' '}
+          </div>
+        )}
+        {data?.userBuy?.successful && (
           <div>
             Yay {JSON.stringify(data?.userBuy?.result?.buyer?.name)}, you bought{' '}
             {JSON.stringify(data?.userBuy?.result?.item?.name)} from{' '}

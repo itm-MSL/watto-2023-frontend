@@ -35,7 +35,7 @@ const MarketCreateModel = () => {
 
   return (
     <div className="flex flex-col gap-3 mr-4">
-      <SubHeader>Model:</SubHeader>
+      <SubHeader>Model</SubHeader>
       <form onSubmit={onSubmit} className="flex flex-col gap-3">
         <Input label="Name" type="text" name="name"></Input>
         <Input

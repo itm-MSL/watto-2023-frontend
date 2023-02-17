@@ -27,7 +27,7 @@ const MarketTypes = () => {
             <div key={type.id} className="px-4 grid bg-blue-50">
               <Link
                 to={'/market/types/' + type.id}
-                className="flex hover:scale-105 border-2 rounded-md shadow-md py-2 my-2 mx-4 px-4"
+                className="border-teal-600 bg-teal-100 hover:text-teal-600 flex justify-between hover:scale-105 active:scale-105 border-2 rounded-md shadow-md py-2 my-2 mx-4 px-4"
               >
                 {type.name}
               </Link>

@@ -2,7 +2,7 @@ import { useQuery } from '@apollo/client';
 import { Link, Outlet } from 'react-router-dom';
 import { SubHeader } from '../../components/subheader';
 import { graphql } from '../../gql';
-
+import { mapModelToColor } from './MarketItems';
 const MODEL_LIST = graphql(/* GraphQL */ `
   query ModelList {
     modelList {
@@ -27,7 +27,10 @@ const MarketModels = () => {
             <div key={model.id} className="grid bg-blue-50 px-4">
               <Link
                 to={'/market/models/' + model.id}
-                className="flex hover:scale-105 border-2 rounded-md shadow-md py-2 my-2 mx-4 px-4"
+                className={
+                  'flex justify-between hover:scale-105 active:scale-105 border-2 rounded-md shadow-md py-2 my-2 mx-4 px-4 ' +
+                  mapModelToColor(model.name)
+                }
               >
                 {model.name}
               </Link>

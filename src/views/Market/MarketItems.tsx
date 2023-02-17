@@ -5,7 +5,7 @@ import { graphql } from '../../gql';
 
 const ITEM_LIST = graphql(/* GraphQL */ `
   query ItemList {
-    itemList {
+    itemsExcludingOwnedByUser {
       id
       name
       model {
@@ -16,6 +16,10 @@ const ITEM_LIST = graphql(/* GraphQL */ `
         id
       }
       price
+      user {
+        id
+        name
+      }
     }
   }
 `);
@@ -29,6 +33,7 @@ export const mapModelToColor = (modelName?: string) => {
     silver: 'border-stone-500 bg-stone-100 hover:text-stone-400',
     enchanted: 'border-purple-400 bg-purple-100 hover:text-purple-400',
     embossed: 'border-red-400 bg-red-100 hover:text-red-400',
+    epic: 'border-fuchsia-500 bg-fuchsia-200 hover:text-fuchsia-500',
   };
   if (!modelName) return 'bg-gray-100';
   return modelColorMap[modelName];
@@ -48,9 +53,9 @@ const MarketItems = () => {
     <>
       <SubHeader>Items for sale</SubHeader>
 
-      <div className="p-2 bg-blue-100 grid grid-cols-2 ">
+      <div className="p-2 bg-blue-100 grid grid-cols-2 pt-2">
         <div>
-          {data?.itemList?.map((item) => (
+          {data?.itemsExcludingOwnedByUser?.map((item) => (
             <div key={item.id} className="grid bg-blue-50 px-4">
               <Link
                 to={'/market/items/' + item.id}
@@ -59,6 +64,7 @@ const MarketItems = () => {
                   mapModelToColor(item?.model?.name?.toString())
                 }
               >
+                <h1 className="font-medium">{item.user.name} is selling: </h1>
                 <h1 className="font-semibold">{item?.name?.toUpperCase()}</h1>
                 <p className="font-medium">Price: {item?.price?.toFixed(2)}</p>
               </Link>
