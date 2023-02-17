@@ -1,4 +1,5 @@
 import { useQuery } from '@apollo/client';
+import { SellButton } from '../../components/sellButton';
 import { SubHeader } from '../../components/subheader';
 import { graphql } from '../../gql';
 import { mapModelToColor } from '../Market/MarketItems';
@@ -51,11 +52,13 @@ const ProfileMyItems = ({ userId }: { userId: number }) => {
                 {' // '} {item.updatedAt.slice(11, 19)}
                 {' @ Price: '} {item.price.toFixed(2)} {''}
               </div>
+              <div>
+                <SellButton>Sell</SellButton>
+              </div>
             </div>
           </div>
         ))}
       </div>
-      <div className="grid bg-blue-50 ml-2 shadow-md"></div>
     </div>
   );
 };
