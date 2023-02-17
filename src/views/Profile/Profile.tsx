@@ -21,7 +21,7 @@ const Profile = () => {
   if (error) return <div>Error: {error.message}</div>;
   return (
     <>
-      <Header>My Profile</Header>
+      <Header>Profile</Header>
       <div className="md:grid md:grid-cols-2 flex flex-col">
         <ProfileMe />
         <ProfileMyItems userId={Number(data?.me?.id)} />

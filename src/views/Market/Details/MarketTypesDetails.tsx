@@ -1,6 +1,7 @@
 import { useQuery } from '@apollo/client';
 import { graphql } from '../../../gql';
 import { useParams } from 'react-router-dom';
+import { SubHeader } from '../../../components/subheader';
 
 const TYPE_BY_ID = graphql(/* GraphQL */ `
   query TypeById($id: Int!) {
@@ -22,6 +23,7 @@ const MarketTypesDetails = () => {
 
   return (
     <div className="px-4 bg-blue-50 shadow-md flex flex-col">
+      <SubHeader>Type details</SubHeader>
       <div className="bg-teal-100 p-2 m-2 rounded-xl">
         <h1 className="text-xl">Name: {data?.typeById?.name}</h1>
         <p>Id: {data?.typeById?.id}</p>

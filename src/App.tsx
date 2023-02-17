@@ -31,7 +31,7 @@ function App() {
           </Link>
 
           <Link className="m-2" to={'/profile'}>
-            <NavButton> My profile </NavButton>
+            <NavButton> Profile </NavButton>
           </Link>
 
           <Link className="m-2" to={'/login'}>
