@@ -26,7 +26,7 @@ const ProfileMe = () => {
           <h1>UserId: {data?.me?.id}</h1>
           <h2>UserName: {data?.me?.username}</h2>
           <p>Name: {data?.me?.name} </p>
-          <p>Credits: {data?.me?.credits}</p>
+          <p>Credits: {Number(data?.me?.credits).toFixed(2)}</p>
           <ProfileCreditsUpdate myuserId={Number(data?.me?.id)} />
         </div>
       </div>

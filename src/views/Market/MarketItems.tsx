@@ -40,9 +40,10 @@ const MarketItems = () => {
             <div key={item.id} className="grid bg-blue-50 px-4">
               <Link
                 to={'/market/items/' + item.id}
-                className="flex hover:scale-105 border-2 rounded-md shadow-md py-2 my-2 mx-4 px-4"
+                className="flex justify-between hover:scale-105 border-2 rounded-md shadow-md py-2 my-2 mx-4 px-4"
               >
-                {item.name}
+                <h1>{item.name.toUpperCase()}</h1>
+                <p>Price: {item.price.toFixed(2)}</p>
               </Link>
             </div>
           ))}

@@ -37,7 +37,9 @@ const MarketItemsDetails = () => {
     <div className="px-4 bg-blue-50 shadow-md flex flex-col">
       <MarketItemsDetailsBuy itemid={Number(data?.itemById.id)} />
       <div className="bg-blue-200 p-2 m-2 rounded-xl">
-        <p className="font-bold">Price: {data?.itemById.price}</p>
+        <p className="font-bold">
+          Price: {Number(data?.itemById.price).toFixed(2)}
+        </p>
         <h1 className="text-xl">Name: {data?.itemById?.name}</h1>
         <p>Id: {data?.itemById?.id}</p>
         <h1 className="text-xl">Model: {data?.itemById?.model.name}</h1>

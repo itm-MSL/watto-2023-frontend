@@ -1,5 +1,4 @@
 import { useQuery } from '@apollo/client';
-import { Link, Outlet } from 'react-router-dom';
 import { SubHeader } from '../../components/subheader';
 import { graphql } from '../../gql';
 
@@ -19,6 +18,7 @@ const ITEMS_BY_USER_ID = graphql(/* GraphQL */ `
         indexPrice
       }
       price
+      updatedAt
     }
   }
 `);
@@ -39,7 +39,10 @@ const ProfileMyItems = ({ userId }: { userId: number }) => {
         {data?.itemsByUserId?.map((item: any) => (
           <div key={item.id} className="flex flex-col bg-blue-50">
             <div className="hover:italic border-2 rounded-md shadow-md py-2 my-2 mx-4 px-4">
-              {item.name}
+              {item.name.toUpperCase()}
+              {' Date: '} {item.updatedAt.slice(0, 10)}
+              {' Time: '} {item.updatedAt.slice(11, 19)}
+              {' Price: '} {item.price.toFixed(2)} {''}
             </div>
           </div>
         ))}
