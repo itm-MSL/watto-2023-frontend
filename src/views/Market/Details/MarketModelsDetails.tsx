@@ -28,7 +28,7 @@ const MarketModelsDetails = () => {
       <div
         className={
           'bg-blue-200 p-2 m-2 rounded-xl ' +
-          mapModelToColor(data?.modelById?.name)
+          mapModelToColor(data?.modelById?.name?.toString())
         }
       >
         <h1 className="text-xl">Name: {data?.modelById?.name}</h1>
