@@ -1,6 +1,6 @@
-import { graphql } from '../../gql';
+import { graphql } from '../../../gql';
 import { useMutation } from '@apollo/client';
-import { Button } from '../../components/button';
+import { Button } from '../../../components/button';
 
 const REFUND = graphql(/* GraphQL */ `
   mutation Refund($itemId: Int!) {

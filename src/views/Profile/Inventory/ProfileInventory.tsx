@@ -1,6 +1,6 @@
 import React from 'react';
 import ProfileMe from '../Me/ProfileMe';
-import ProfileMyItems from '../ProfileMyItems';
+import ProfileMyItems from './ProfileMyItems';
 import { useQuery } from '@apollo/client';
 import { graphql } from '../../../gql';
 
@@ -21,7 +21,6 @@ const ProfileInventory = () => {
   if (error) return <div>Error: {error.message}</div>;
   return (
     <div>
-      <ProfileMe />
       <ProfileMyItems userId={Number(data?.me?.id)} />
     </div>
   );

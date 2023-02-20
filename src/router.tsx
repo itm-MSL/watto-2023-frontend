@@ -65,12 +65,12 @@ export const router = createBrowserRouter([
         element: <Profile />,
         children: [
           {
-            path: 'me',
-            element: <ProfileMe />,
-          },
-          {
             path: 'inventory',
             element: <ProfileInventory />,
+          },
+          {
+            path: 'me',
+            element: <ProfileMe />,
           },
         ],
       },
