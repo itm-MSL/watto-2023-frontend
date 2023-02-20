@@ -22,7 +22,7 @@ function App() {
             <NavButton> Market</NavButton>
           </Link>
 
-          <Link className="m-2" to={'/profile'}>
+          <Link className="m-2" to={'/profile/me'}>
             <NavButton> Profile </NavButton>
           </Link>
 
