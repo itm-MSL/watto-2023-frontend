@@ -21,10 +21,10 @@ const MarketTypes = () => {
     <>
       <SubHeader>All types</SubHeader>
 
-      <div className="p-2 bg-blue-100 grid grid-cols-2">
+      <div className="p-2 grid grid-cols-2">
         <div>
           {data?.typeList?.map((type: any) => (
-            <div key={type.id} className="px-4 grid bg-blue-50">
+            <div key={type.id} className="px-4 grid">
               <Link
                 to={'/market/types/' + type.id}
                 className="border-teal-600 bg-teal-100 hover:text-teal-600 flex justify-between hover:scale-105 active:scale-105 border-2 rounded-md shadow-md py-2 my-2 mx-4 px-4"
@@ -34,7 +34,8 @@ const MarketTypes = () => {
             </div>
           ))}
         </div>
-        <div className="grid bg-blue-50 ml-2 shadow-md">
+        <div className="grid ml-2">
+          {/* Outlet for Details view of selected type */}
           <Outlet />
         </div>
       </div>

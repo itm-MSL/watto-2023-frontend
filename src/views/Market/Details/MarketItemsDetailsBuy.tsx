@@ -40,10 +40,7 @@ const MarketItemsDetailsBuy = ({ itemid }: { itemid: number }) => {
 
   return (
     <>
-      <form
-        onSubmit={onSubmit}
-        className="flex flex-col gap-3 bg-blue-50 m-2 p-2"
-      >
+      <form onSubmit={onSubmit} className="flex flex-col gap-3 m-2 p-2">
         <BuyButton type="submit">Buy</BuyButton>
       </form>
       <div className="text-center pb-4">

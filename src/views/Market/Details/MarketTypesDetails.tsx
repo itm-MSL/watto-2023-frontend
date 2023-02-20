@@ -22,7 +22,7 @@ const MarketTypesDetails = () => {
   if (error) return <div>Error: {error.message}</div>;
 
   return (
-    <div className="px-4 bg-blue-50 shadow-md flex flex-col">
+    <div className="px-4 flex flex-col">
       <SubHeader>Type details</SubHeader>
       <div className="bg-teal-100 p-2 m-2 rounded-xl">
         <h1 className="text-xl">Name: {data?.typeById?.name}</h1>

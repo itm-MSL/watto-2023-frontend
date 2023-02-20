@@ -47,6 +47,7 @@ export const Login = () => {
     }
     console.log('result', data);
   }, [data]);
+
   return (
     <div className="flex flex-col gap-3">
       <Header>Login</Header>
@@ -58,6 +59,10 @@ export const Login = () => {
 
       {loading && <div className="animate-spin ">.</div>}
       {error && <div> {error.message} </div>}
+      {data?.signin?.messages?.map((message) => (
+        <div key={message?.message}> {message?.message} </div>
+      ))}
+
       {data?.signin?.successful && !error && (
         <div> Welcome back {data.signin?.result?.user?.name}! </div>
       )}

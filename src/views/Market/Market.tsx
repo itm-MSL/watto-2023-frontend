@@ -19,6 +19,7 @@ const Market = () => {
           <Button> Models </Button>
         </Link>
       </nav>
+      {/* Outlet for Items, Types or Models view */}
       <Outlet />
     </>
   );

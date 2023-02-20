@@ -35,7 +35,7 @@ const MarketItemsDetails = () => {
   if (error) return <div>Error: {error.message}</div>;
 
   return (
-    <div className="px-4 bg-blue-50 shadow-md flex flex-col">
+    <div className="px-4  flex flex-col">
       <SubHeader>Item details</SubHeader>
       <div
         className={

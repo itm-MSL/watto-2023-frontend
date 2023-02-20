@@ -46,17 +46,18 @@ const MarketItems = () => {
   if (error)
     return (
       <div>
-        Error: {error.message} {(window.location.href = '/login')}
+        Error: {error.message}
+        {(window.location.href = '/login')}
       </div>
     );
   return (
     <>
       <SubHeader>Items for sale</SubHeader>
 
-      <div className="p-2 bg-blue-100 grid grid-cols-2 pt-2">
+      <div className="p-2 grid grid-cols-2 pt-2">
         <div>
           {data?.itemsExcludingOwnedByUser?.map((item) => (
-            <div key={item.id} className="grid bg-blue-50 px-4">
+            <div key={item.id} className="grid px-4">
               <Link
                 to={'/market/items/' + item.id}
                 className={
@@ -71,7 +72,8 @@ const MarketItems = () => {
             </div>
           ))}
         </div>
-        <div className="grid bg-blue-50 ml-2 shadow-md">
+        <div className="grid ml-2 ">
+          {/* Outlet for Details view of selected item */}
           <Outlet />
         </div>
       </div>

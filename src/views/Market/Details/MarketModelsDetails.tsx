@@ -23,17 +23,17 @@ const MarketModelsDetails = () => {
   if (error) return <div>Error: {error.message}</div>;
 
   return (
-    <div className="px-4 bg-blue-50 shadow-md flex flex-col">
+    <div className="px-4 flex flex-col">
       <SubHeader>Model details</SubHeader>
       <div
         className={
-          'bg-blue-200 p-2 m-2 rounded-xl ' +
+          'p-2 m-2 rounded-xl ' +
           mapModelToColor(data?.modelById?.name?.toString())
         }
       >
         <h1 className="text-xl">Name: {data?.modelById?.name}</h1>
         <p>Id: {data?.modelById?.id}</p>
-        <p>Multiplier: {data?.modelById?.multiplier}</p>
+        <p>Multiplier: {data?.modelById?.multiplier.toFixed(2)}</p>
       </div>
     </div>
   );

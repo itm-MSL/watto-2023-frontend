@@ -21,10 +21,10 @@ const MarketModels = () => {
     <>
       <SubHeader>All models</SubHeader>
 
-      <div className="p-2 bg-blue-100 grid grid-cols-2">
+      <div className="p-2 grid grid-cols-2">
         <div>
           {data?.modelList?.map((model: any) => (
-            <div key={model.id} className="grid bg-blue-50 px-4">
+            <div key={model.id} className="grid px-4">
               <Link
                 to={'/market/models/' + model.id}
                 className={
@@ -37,7 +37,8 @@ const MarketModels = () => {
             </div>
           ))}
         </div>
-        <div className="grid bg-blue-50 ml-2 shadow-md">
+        <div className="grid ml-2">
+          {/* Outlet for Details view of selected model */}
           <Outlet />
         </div>
       </div>

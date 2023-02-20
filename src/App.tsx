@@ -9,8 +9,8 @@ const handleOnLogout = () => {
 function App() {
   return (
     <>
-      <div className="flex flex-col mx-4 mt-4 px-4 bg-amber-700 rounded-t-2xl">
-        <h1 className="text-4xl text-white font-semibold m-4">
+      <div className="flex flex-col mx-4 mt-4 px-4 bg-amber-800 rounded-2xl">
+        <h1 className="text-4xl text-white font-semibold m-4 text-center">
           Watto's marketplace!
         </h1>
         <nav>
@@ -22,7 +22,7 @@ function App() {
             <NavButton> Login </NavButton>
           </Link>
 
-          <Link className="m-2" to={'/market'}>
+          <Link className="m-2" to={'/market/items'}>
             <NavButton> Market</NavButton>
           </Link>
 
@@ -39,7 +39,7 @@ function App() {
           </Link>
         </nav>
       </div>
-      <section className="mx-4 p-4 bg-blue-100">
+      <section className="mx-4 p-4 bg-white">
         <Outlet />
       </section>
     </>
