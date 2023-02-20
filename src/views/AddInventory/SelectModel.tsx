@@ -17,10 +17,10 @@ const SelectModel = ({ name }: { name: string }) => {
   return (
     <div>
       <label>Model</label>
-      <select className="rounded-md px-4 py-2 border-2 mr-2" name={name}>
-        {data?.modelList?.map((type: any) => (
-          <option key={type.id} value={type.id}>
-            {type.name}
+      <select className="rounded-md px-4 py-2 border-2 mr-2 " name={name}>
+        {data?.modelList?.map((model) => (
+          <option key={model.id} value={model.id}>
+            {model.name}
           </option>
         ))}
       </select>

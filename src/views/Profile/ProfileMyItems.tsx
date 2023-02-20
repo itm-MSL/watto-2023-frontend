@@ -3,6 +3,7 @@ import { SellButton } from '../../components/sellButton';
 import { SubHeader } from '../../components/subheader';
 import { graphql } from '../../gql';
 import { mapModelToColor } from '../Market/MarketItems';
+import SetItemForSale from './SetItemForSale';
 
 const ITEMS_BY_USER_ID = graphql(/* GraphQL */ `
   query ItemsByUserId($userId: Int!) {
@@ -21,6 +22,7 @@ const ITEMS_BY_USER_ID = graphql(/* GraphQL */ `
       }
       price
       updatedAt
+      forSale
     }
   }
 `);
@@ -51,9 +53,11 @@ const ProfileMyItems = ({ userId }: { userId: number }) => {
                 {' Bought on: '} {item.updatedAt.slice(0, 10)}
                 {' // '} {item.updatedAt.slice(11, 19)}
                 {' @ Price: '} {item.price.toFixed(2)} {''}
+                {item.forSale ? ' // For sale' : ' // Not for sale'}
               </div>
               <div>
                 <SellButton>Refund</SellButton>
+                <SetItemForSale itemId={item.id} />
               </div>
             </div>
           </div>
