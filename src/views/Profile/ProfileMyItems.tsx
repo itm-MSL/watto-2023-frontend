@@ -39,9 +39,9 @@ const ProfileMyItems = ({ userId }: { userId: number }) => {
   return (
     <div>
       <SubHeader>My items</SubHeader>
-      <div className="p-2 bg-blue-100 grid">
+      <div className="p-2 grid">
         {data?.itemsByUserId?.map((item: any) => (
-          <div key={item.id} className="flex flex-col bg-blue-50">
+          <div key={item.id} className="flex flex-col">
             <div
               className={
                 'border-2 rounded-md shadow-md py-2 my-2 mx-4 px-4' +

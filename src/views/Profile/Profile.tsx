@@ -1,31 +1,21 @@
-import ProfileMyItems from './ProfileMyItems';
-import ProfileMe from './ProfileMe';
 import { Header } from '../../components/header';
-import { useQuery } from '@apollo/client';
-import { graphql } from '../../gql';
-
-const ME = graphql(/* GraphQL */ `
-  query Me {
-    me {
-      id
-      name
-      username
-      credits
-    }
-  }
-`);
+import { Link, Outlet } from 'react-router-dom';
+import { Button } from '../../components/button';
 
 const Profile = () => {
-  const { data, loading, error } = useQuery(ME);
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error.message}</div>;
   return (
     <>
       <Header>Profile</Header>
-      <div className="md:grid md:grid-cols-2 flex flex-col">
-        <ProfileMe />
-        <ProfileMyItems userId={Number(data?.me?.id)} />
-      </div>
+      <nav>
+        <Link className="p-2" to={'/profile/me'}>
+          <Button> Me </Button>
+        </Link>
+        <Link className="p-2" to={'/profile/inventory'}>
+          <Button> Inventory </Button>
+        </Link>
+      </nav>
+      {/* Outlet for Me or Inventory view */}
+      <Outlet />
     </>
   );
 };

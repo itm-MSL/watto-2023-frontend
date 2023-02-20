@@ -26,14 +26,9 @@ const SetItemForSale = ({ itemId }: { itemId: number }) => {
   };
 
   return (
-    <>
-      <form
-        onSubmit={onSubmit}
-        className="flex flex-col gap-3 bg-blue-50 m-2 p-2"
-      >
-        <Button type="submit">Set Item For Sale</Button>
-      </form>
-    </>
+    <form onSubmit={onSubmit} className="flex flex-col gap-3 m-2 p-2">
+      <Button type="submit">Set Item For Sale</Button>
+    </form>
   );
 };
 

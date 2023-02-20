@@ -10,7 +10,8 @@ import MarketTypesDetails from './views/Market/Types/TypeDetails';
 import MarketModels from './views/Market/Models/ListModels';
 import MarketModelsDetails from './views/Market/Models/ModelDetails';
 import Profile from './views/Profile/Profile';
-import ProfileMe from './views/Profile/ProfileMe';
+import ProfileMe from './views/Profile/Me/ProfileMe';
+import ProfileInventory from './views/Profile/Inventory/ProfileInventory';
 
 export const router = createBrowserRouter([
   {
@@ -62,10 +63,16 @@ export const router = createBrowserRouter([
       {
         path: '/profile',
         element: <Profile />,
-      },
-      {
-        path: '/profile/me',
-        element: <ProfileMe />,
+        children: [
+          {
+            path: 'me',
+            element: <ProfileMe />,
+          },
+          {
+            path: 'inventory',
+            element: <ProfileInventory />,
+          },
+        ],
       },
     ],
   },

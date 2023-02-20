@@ -1,6 +1,6 @@
-import { Input } from '../../components/input';
-import { Button } from '../../components/button';
-import { graphql } from '../../gql';
+import { Input } from '../../../components/input';
+import { Button } from '../../../components/button';
+import { graphql } from '../../../gql';
 import { useMutation } from '@apollo/client';
 
 const USER_CREDITS_UPDATE = graphql(/* GraphQL */ `
@@ -34,10 +34,7 @@ const ProfileCreditsUpdate = ({ myuserId }: { myuserId: number }) => {
 
   return (
     <>
-      <form
-        onSubmit={onSubmit}
-        className="flex flex-col gap-3 bg-blue-50 m-2 p-2"
-      >
+      <form onSubmit={onSubmit} className="flex flex-col gap-3 m-2 p-2">
         <Input label="Credits" type="number" step="0.01" name="credits"></Input>
         <Button type="submit">Add</Button>
       </form>
