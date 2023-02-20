@@ -14,10 +14,6 @@ function App() {
           Watto's marketplace!
         </h1>
         <nav>
-          <Link className="m-2" to={'/signup'}>
-            <NavButton> Signup </NavButton>
-          </Link>
-
           <Link className="m-2" to={'/login'}>
             <NavButton> Login </NavButton>
           </Link>

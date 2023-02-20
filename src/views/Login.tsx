@@ -4,6 +4,7 @@ import { graphql } from '../gql';
 import { Header } from '../components/header';
 import { Button } from '../components/button';
 import { Input } from '../components/input';
+import { Link } from 'react-router-dom';
 
 const LOGIN_MUTATION = graphql(/* GraphQL */ `
   mutation Login($username: String!, $password: String!) {
@@ -49,23 +50,28 @@ export const Login = () => {
   }, [data]);
 
   return (
-    <div className="flex flex-col gap-3">
-      <Header>Login</Header>
-      <form onSubmit={onSubmit} className="flex flex-col gap-3">
-        <Input label="Username" type="text" name="username"></Input>
-        <Input label="password" type="password" name="password"></Input>
-        <Button type="submit">Login</Button>
-      </form>
+    <>
+      <div className="flex flex-col gap-3">
+        <Header>Login</Header>
+        <Link to="/signup" className="italic">
+          No account? - click here to create one
+        </Link>
+        <form onSubmit={onSubmit} className="flex flex-col gap-3">
+          <Input label="Username" type="text" name="username"></Input>
+          <Input label="password" type="password" name="password"></Input>
+          <Button type="submit">Login</Button>
+        </form>
 
-      {loading && <div className="animate-spin ">.</div>}
-      {error && <div> {error.message} </div>}
-      {data?.signin?.messages?.map((message) => (
-        <div key={message?.message}> {message?.message} </div>
-      ))}
+        {loading && <div className="animate-spin ">.</div>}
+        {error && <div> {error.message} </div>}
+        {data?.signin?.messages?.map((message) => (
+          <div key={message?.message}> {message?.message} </div>
+        ))}
 
-      {data?.signin?.successful && !error && (
-        <div> Welcome back {data.signin?.result?.user?.name}! </div>
-      )}
-    </div>
+        {data?.signin?.successful && !error && (
+          <div> Welcome back {data.signin?.result?.user?.name}! </div>
+        )}
+      </div>
+    </>
   );
 };
