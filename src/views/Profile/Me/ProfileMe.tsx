@@ -17,7 +17,13 @@ const ME = graphql(/* GraphQL */ `
 const ProfileMe = () => {
   const { data, loading, error } = useQuery(ME);
   if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error.message}</div>;
+  if (error)
+    return (
+      <div>
+        Error: {error.message}
+        {(window.location.href = '/login')}
+      </div>
+    );
   return (
     <div>
       <SubHeader>My info</SubHeader>

@@ -1,10 +1,5 @@
-import { NavButton } from './components/navButton';
 import { Link, Outlet } from 'react-router-dom';
-
-const handleOnLogout = () => {
-  localStorage.removeItem('token');
-  window.location.reload();
-};
+import { NavButton } from './components/navButton';
 
 function App() {
   return (
@@ -24,10 +19,6 @@ function App() {
 
           <Link className="m-2" to={'/profile/me'}>
             <NavButton> Profile </NavButton>
-          </Link>
-
-          <Link className="m-2" to={'/login'}>
-            <NavButton onClick={handleOnLogout}>Logout</NavButton>
           </Link>
         </nav>
       </div>
