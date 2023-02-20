@@ -7,14 +7,10 @@ const MarketCreate = () => {
   return (
     <>
       <Header>Add inventory</Header>
-      <div className="flex flex-col">
-        <div className="flex ">
-          <MarketCreateType />
-          <MarketCreateModel />
-        </div>
-        <div className="flex">
-          <MarketCreateItem />
-        </div>
+      <div className="flex flex-wrap">
+        <MarketCreateType />
+        <MarketCreateModel />
+        <MarketCreateItem />
       </div>
     </>
   );

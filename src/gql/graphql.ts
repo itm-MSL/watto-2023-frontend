@@ -82,6 +82,7 @@ export type DeleteTypePayload = {
 
 export type Item = {
   __typename?: 'Item';
+  forSale?: Maybe<Scalars['Boolean']>;
   id: Scalars['ID'];
   insertedAt?: Maybe<Scalars['NaiveDateTime']>;
   model: Model;
@@ -107,6 +108,8 @@ export type RootMutationType = {
   itemCreate?: Maybe<CreateItemPayload>;
   /** delete an item */
   itemDelete?: Maybe<DeleteItemPayload>;
+  /** makes item buyable */
+  itemSellable?: Maybe<UpdateItemPayload>;
   /** updates an item */
   itemUpdate?: Maybe<UpdateItemPayload>;
   /** create a new model */
@@ -115,6 +118,8 @@ export type RootMutationType = {
   modelDelete?: Maybe<DeleteModelPayload>;
   /** updates a model */
   modelUpdate?: Maybe<UpdateModelPayload>;
+  /** Buy an item from a user */
+  refund?: Maybe<TransactionPayload>;
   signin?: Maybe<UserAuthPayload>;
   signup?: Maybe<UserAuthPayload>;
   /** create a new type */
@@ -142,6 +147,11 @@ export type RootMutationTypeItemDeleteArgs = {
 };
 
 
+export type RootMutationTypeItemSellableArgs = {
+  id?: InputMaybe<Scalars['Int']>;
+};
+
+
 export type RootMutationTypeItemUpdateArgs = {
   id?: InputMaybe<Scalars['Int']>;
   name?: InputMaybe<Scalars['String']>;
@@ -164,6 +174,11 @@ export type RootMutationTypeModelUpdateArgs = {
   id?: InputMaybe<Scalars['Int']>;
   multiplier?: InputMaybe<Scalars['Float']>;
   name?: InputMaybe<Scalars['String']>;
+};
+
+
+export type RootMutationTypeRefundArgs = {
+  itemId?: InputMaybe<Scalars['Int']>;
 };
 
 

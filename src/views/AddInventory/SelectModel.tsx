@@ -15,13 +15,16 @@ const SelectModel = ({ name }: { name: string }) => {
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
   return (
-    <select className="rounded-md px-4 py-2 border-2 mr-2" name={name}>
-      {data?.modelList?.map((type: any) => (
-        <option key={type.id} value={type.id}>
-          {type.name}
-        </option>
-      ))}
-    </select>
+    <div>
+      <label>Model</label>
+      <select className="rounded-md px-4 py-2 border-2 mr-2" name={name}>
+        {data?.modelList?.map((type: any) => (
+          <option key={type.id} value={type.id}>
+            {type.name}
+          </option>
+        ))}
+      </select>
+    </div>
   );
 };
 

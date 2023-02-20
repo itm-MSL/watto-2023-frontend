@@ -42,10 +42,7 @@ const MarketCreateItem = () => {
       <SubHeader>Item</SubHeader>
       <form onSubmit={onSubmit} className="flex flex-col gap-3">
         <Input label="Name" type="text" name="name"></Input>
-        <div className="grid grid-cols-2">
-          <h1>Model</h1>
-          <h1>Type</h1>
-        </div>
+        <div className="grid grid-cols-2"></div>
         <div className="grid grid-cols-2">
           <SelectModel name="modelId" />
           <SelectType name="typeId" />

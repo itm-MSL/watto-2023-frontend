@@ -53,7 +53,7 @@ const ProfileMyItems = ({ userId }: { userId: number }) => {
                 {' @ Price: '} {item.price.toFixed(2)} {''}
               </div>
               <div>
-                <SellButton>Sell</SellButton>
+                <SellButton>Refund</SellButton>
               </div>
             </div>
           </div>
