@@ -13,17 +13,13 @@ function App() {
         <h1 className="text-4xl text-white font-semibold m-4 text-center">
           Watto's marketplace!
         </h1>
-        <nav>
+        <nav className="flex justify-center">
           <Link className="m-2" to={'/login'}>
             <NavButton> Login </NavButton>
           </Link>
 
           <Link className="m-2" to={'/market/items'}>
             <NavButton> Market</NavButton>
-          </Link>
-
-          <Link className="m-2" to={'/market/create'}>
-            <NavButton> Add inventory </NavButton>
           </Link>
 
           <Link className="m-2" to={'/profile'}>
@@ -35,7 +31,8 @@ function App() {
           </Link>
         </nav>
       </div>
-      <section className="mx-4 p-4 bg-white">
+      <section className="mx-4 p-4">
+        {/* Outlet for Login, Market, Add inventory, Profile or Logout view */}
         <Outlet />
       </section>
     </>

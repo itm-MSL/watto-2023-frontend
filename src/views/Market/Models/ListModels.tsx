@@ -1,8 +1,8 @@
 import { useQuery } from '@apollo/client';
 import { Link, Outlet } from 'react-router-dom';
-import { SubHeader } from '../../components/subheader';
-import { graphql } from '../../gql';
-import { mapModelToColor } from './MarketItems';
+import { SubHeader } from '../../../components/subheader';
+import { graphql } from '../../../gql';
+import { mapModelToColor } from '../../../components/itemCard';
 const MODEL_LIST = graphql(/* GraphQL */ `
   query ModelList {
     modelList {

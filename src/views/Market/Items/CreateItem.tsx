@@ -1,10 +1,10 @@
-import { SubHeader } from '../../components/subheader';
-import { Input } from '../../components/input';
-import { Button } from '../../components/button';
-import { graphql } from '../../gql';
+import { SubHeader } from '../../../components/subheader';
+import { Input } from '../../../components/input';
+import { Button } from '../../../components/button';
+import { graphql } from '../../../gql';
 import { useMutation } from '@apollo/client';
-import SelectModel from './SelectModel';
-import SelectType from './SelectType';
+import SelectModel from '../../../components/selectModel';
+import SelectType from '../../../components/selectType';
 
 const ITEM_CREATE = graphql(/* GraphQL */ `
   mutation ItemCreate($name: String!, $typeId: Int!, $modelId: Int!) {

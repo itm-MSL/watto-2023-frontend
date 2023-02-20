@@ -3,14 +3,14 @@ import App from './App';
 import { Signup } from './views/Signup';
 import { Login } from './views/Login';
 import Market from './views/Market/Market';
-import MarketCreate from './views/AddInventory/MarketCreate';
-import MarketItems from './views/Market/MarketItems';
-import MarketItemsDetails from './views/Market/Details/MarketItemsDetails';
-import MarketTypes from './views/Market/MarketTypes';
-import MarketTypesDetails from './views/Market/Details/MarketTypesDetails';
-import MarketModels from './views/Market/MarketModels';
-import MarketModelsDetails from './views/Market/Details/MarketModelsDetails';
+import MarketCreate from './views/Market/MarketCreate';
+import MarketItems from './views/Market/Items/ListItems';
+import MarketTypes from './views/Market/Types/ListTypes';
+import MarketTypesDetails from './views/Market/Types/TypeDetails';
+import MarketModels from './views/Market/Models/ListModels';
+import MarketModelsDetails from './views/Market/Models/ModelDetails';
 import Profile from './views/Profile/Profile';
+import ProfileMe from './views/Profile/ProfileMe';
 
 export const router = createBrowserRouter([
   {
@@ -32,12 +32,6 @@ export const router = createBrowserRouter([
           {
             path: 'items',
             element: <MarketItems />,
-            children: [
-              {
-                path: ':itemid',
-                element: <MarketItemsDetails />,
-              },
-            ],
           },
           {
             path: 'types',
@@ -59,15 +53,19 @@ export const router = createBrowserRouter([
               },
             ],
           },
+          {
+            path: 'create',
+            element: <MarketCreate />,
+          },
         ],
-      },
-      {
-        path: '/market/create',
-        element: <MarketCreate />,
       },
       {
         path: '/profile',
         element: <Profile />,
+      },
+      {
+        path: '/profile/me',
+        element: <ProfileMe />,
       },
     ],
   },

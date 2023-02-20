@@ -1,7 +1,7 @@
 import { useQuery } from '@apollo/client';
 import { graphql } from '../../../gql';
 import { useParams } from 'react-router-dom';
-import { mapModelToColor } from '../MarketItems';
+import { mapModelToColor } from '../../../components/itemCard';
 import { SubHeader } from '../../../components/subheader';
 
 const MODEL_BY_ID = graphql(/* GraphQL */ `

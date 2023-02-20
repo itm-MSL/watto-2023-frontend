@@ -1,8 +1,7 @@
 import { useQuery } from '@apollo/client';
-import { SellButton } from '../../components/sellButton';
 import { SubHeader } from '../../components/subheader';
 import { graphql } from '../../gql';
-import { mapModelToColor } from '../Market/MarketItems';
+import { mapModelToColor } from '../../components/itemCard';
 import RefundItem from './RefundItem';
 import SetItemForSale from './SetItemForSale';
 

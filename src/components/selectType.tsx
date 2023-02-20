@@ -1,5 +1,5 @@
 import { useQuery } from '@apollo/client';
-import { graphql } from '../../gql';
+import { graphql } from '../gql';
 
 const TYPE_LIST = graphql(/* GraphQL */ `
   query TypeList {

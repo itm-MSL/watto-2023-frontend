@@ -1,7 +1,7 @@
 import { useQuery } from '@apollo/client';
 import { Link, Outlet } from 'react-router-dom';
-import { SubHeader } from '../../components/subheader';
-import { graphql } from '../../gql';
+import { SubHeader } from '../../../components/subheader';
+import { graphql } from '../../../gql';
 
 const TYPE_LIST = graphql(/* GraphQL */ `
   query TypeList {

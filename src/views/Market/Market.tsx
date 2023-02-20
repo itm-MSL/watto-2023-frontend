@@ -18,6 +18,9 @@ const Market = () => {
         <Link className="p-2" to={'/market/models'}>
           <Button> Models </Button>
         </Link>
+        <Link className="p-2" to={'/market/create'}>
+          <Button> Create </Button>
+        </Link>
       </nav>
       {/* Outlet for Items, Types or Models view */}
       <Outlet />
