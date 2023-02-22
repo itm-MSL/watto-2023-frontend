@@ -42,11 +42,9 @@ export const Login = () => {
   };
 
   useEffect(() => {
-    if (data?.signin?.successful) {
+    if (data && data.signin && data.signin.result && data.signin.result.token) {
       localStorage.setItem('token', data.signin.result.token);
-      console.log('token', data.signin.result.token);
     }
-    console.log('result', data);
   }, [data]);
 
   return (
