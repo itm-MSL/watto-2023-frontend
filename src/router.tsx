@@ -12,12 +12,17 @@ import MarketModelsDetails from './views/Market/Models/ModelDetails';
 import Profile from './views/Profile/Profile';
 import ProfileMe from './views/Profile/Me/ProfileMe';
 import MyItems from './views/Profile/Inventory/MyItems';
+import { Home } from './views/Home';
 
 export const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
     children: [
+      {
+        path: '/home',
+        element: <Home />,
+      },
       {
         path: '/signup',
         element: <Signup />,
