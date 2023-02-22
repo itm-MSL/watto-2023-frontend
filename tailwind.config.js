@@ -12,5 +12,5 @@ module.exports = {
       sans: ['Montserrat'],
     },
   },
-  plugins: [],
+  plugins: [require('tailwind-scrollbar-hide')],
 };

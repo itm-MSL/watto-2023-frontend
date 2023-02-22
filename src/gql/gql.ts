@@ -13,6 +13,7 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * Therefore it is highly recommended to use the babel-plugin for production.
  */
 const documents = {
+    "\n  query Me {\n    me {\n      id\n      name\n      username\n      credits\n    }\n  }\n": types.MeDocument,
     "\n  mutation UserBuy($itemId: Int!) {\n    userBuy(itemId: $itemId) {\n      successful\n      messages {\n        message\n      }\n      result {\n        buyer {\n          name\n        }\n        seller {\n          name\n        }\n        item {\n          name\n        }\n      }\n    }\n  }\n": types.UserBuyDocument,
     "\n  query ModelList {\n    modelList {\n      id\n      name\n    }\n  }\n": types.ModelListDocument,
     "\n  query TypeList {\n    typeList {\n      id\n      name\n    }\n  }\n": types.TypeListDocument,
@@ -26,7 +27,6 @@ const documents = {
     "\n  query ItemsByUserId {\n    itemsByUserId {\n      id\n      name\n      model {\n        id\n        name\n        multiplier\n      }\n      type {\n        id\n        name\n        indexPrice\n      }\n      price\n      updatedAt\n      forSale\n    }\n  }\n": types.ItemsByUserIdDocument,
     "\n  mutation Refund($itemId: Int!) {\n    refund(itemId: $itemId) {\n      successful\n    }\n  }\n": types.RefundDocument,
     "\n  mutation ItemSellable($itemId: Int!) {\n    itemSellable(id: $itemId) {\n      successful\n    }\n  }\n": types.ItemSellableDocument,
-    "\n  query Me {\n    me {\n      id\n      name\n      username\n      credits\n    }\n  }\n": types.MeDocument,
     "\n  mutation UserCreditsUpdate($userId: Int!, $credits: Float!) {\n    userCreditsUpdate(userId: $userId, credits: $credits) {\n      successful\n      result {\n        id\n        credits\n      }\n    }\n  }\n": types.UserCreditsUpdateDocument,
     "\n  mutation Signup(\n    $username: String!\n    $password: String!\n    $name: String!\n    $credits: Float!\n  ) {\n    signup(\n      username: $username\n      password: $password\n      name: $name\n      credits: $credits\n    ) {\n      result {\n        token\n        user {\n          id\n          name\n        }\n      }\n      messages {\n        message\n      }\n    }\n  }\n": types.SignupDocument,
 };
@@ -45,6 +45,10 @@ const documents = {
  */
 export function graphql(source: string): unknown;
 
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  query Me {\n    me {\n      id\n      name\n      username\n      credits\n    }\n  }\n"): (typeof documents)["\n  query Me {\n    me {\n      id\n      name\n      username\n      credits\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
@@ -97,10 +101,6 @@ export function graphql(source: "\n  mutation Refund($itemId: Int!) {\n    refun
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(source: "\n  mutation ItemSellable($itemId: Int!) {\n    itemSellable(id: $itemId) {\n      successful\n    }\n  }\n"): (typeof documents)["\n  mutation ItemSellable($itemId: Int!) {\n    itemSellable(id: $itemId) {\n      successful\n    }\n  }\n"];
-/**
- * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
- */
-export function graphql(source: "\n  query Me {\n    me {\n      id\n      name\n      username\n      credits\n    }\n  }\n"): (typeof documents)["\n  query Me {\n    me {\n      id\n      name\n      username\n      credits\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
