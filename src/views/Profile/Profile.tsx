@@ -11,18 +11,20 @@ const Profile = () => {
   return (
     <>
       <Header>Profile</Header>
-      <nav>
-        <Link className="p-2" to={'/profile/me'}>
-          <Button> Me </Button>
-        </Link>
-
-        <Link className="p-2" to={'/profile/inventory'}>
-          <Button> Inventory </Button>
-        </Link>
-
-        <Link className="m-2" to={'/login'}>
-          <Button onClick={handleOnLogout}>Logout</Button>
-        </Link>
+      <nav className="flex justify-between">
+        <div>
+          <Link className="p-2" to={'/profile/me'}>
+            <Button> Me </Button>
+          </Link>
+          <Link className="p-2" to={'/profile/inventory'}>
+            <Button> Inventory </Button>
+          </Link>
+        </div>
+        <div>
+          <Link className="m-2" to={'/login'}>
+            <Button onClick={handleOnLogout}>Logout</Button>
+          </Link>
+        </div>
       </nav>
       {/* Outlet for Me or Inventory view */}
       <Outlet />

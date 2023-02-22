@@ -35,6 +35,7 @@ export const mapModelToColor = (modelName?: string) => {
     enchanted: 'border-purple-400 bg-purple-100',
     embossed: 'border-red-400 bg-red-100',
     epic: 'border-fuchsia-500 bg-fuchsia-200',
+    Epic: 'border-fuchsia-500 bg-fuchsia-200',
   };
   if (!modelName) return 'bg-gray-100';
   return modelColorMap[modelName];
