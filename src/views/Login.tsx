@@ -50,28 +50,26 @@ export const Login = () => {
   }, [data]);
 
   return (
-    <>
-      <div className="flex flex-col gap-3">
-        <Header>Login</Header>
-        <Link to="/signup" className="italic">
-          No account? - click here to create one
-        </Link>
-        <form onSubmit={onSubmit} className="flex flex-col gap-3">
-          <Input label="Username" type="text" name="username"></Input>
-          <Input label="password" type="password" name="password"></Input>
-          <Button type="submit">Login</Button>
-        </form>
+    <div className="flex flex-col gap-3 lg:w-1/3">
+      <Header>Login</Header>
+      <Link to="/signup" className="italic">
+        No account? - click here to create one
+      </Link>
+      <form onSubmit={onSubmit} className="flex flex-col gap-3">
+        <Input label="Username" type="text" name="username"></Input>
+        <Input label="password" type="password" name="password"></Input>
+        <Button type="submit">Login</Button>
+      </form>
 
-        {loading && <div className="animate-spin ">.</div>}
-        {error && <div> {error.message} </div>}
-        {data?.signin?.messages?.map((message) => (
-          <div key={message?.message}> {message?.message} </div>
-        ))}
+      {loading && <div className="animate-spin ">.</div>}
+      {error && <div> {error.message} </div>}
+      {data?.signin?.messages?.map((message) => (
+        <div key={message?.message}> {message?.message} </div>
+      ))}
 
-        {data?.signin?.successful && !error && (
-          <div> Welcome back {data.signin?.result?.user?.name}! </div>
-        )}
-      </div>
-    </>
+      {data?.signin?.successful && !error && (
+        <div> Welcome back {data.signin?.result?.user?.name}! </div>
+      )}
+    </div>
   );
 };

@@ -25,18 +25,16 @@ const ProfileMe = () => {
       </div>
     );
   return (
-    <div>
+    <>
       <SubHeader>My info</SubHeader>
-      <div className="p-2 grid">
-        <div className="p-2 flex flex-col gap-3 ">
-          <h1>UserId: {data?.me?.id}</h1>
-          <h2>UserName: {data?.me?.username}</h2>
-          <p>Name: {data?.me?.name} </p>
-          <p>Credits: {Number(data?.me?.credits).toFixed(2)}</p>
-          <ProfileCreditsUpdate myuserId={Number(data?.me?.id)} />
-        </div>
+      <div className="p-2 flex flex-col gap-3 ">
+        <h1>UserId: {data?.me?.id}</h1>
+        <h2>UserName: {data?.me?.username}</h2>
+        <p>Name: {data?.me?.name} </p>
+        <p>Credits: {Number(data?.me?.credits).toFixed(2)}</p>
+        <ProfileCreditsUpdate myuserId={Number(data?.me?.id)} />
       </div>
-    </div>
+    </>
   );
 };
 

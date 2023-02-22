@@ -33,12 +33,9 @@ const ProfileCreditsUpdate = ({ myuserId }: { myuserId: number }) => {
   };
 
   return (
-    <>
-      <form onSubmit={onSubmit} className="flex flex-col gap-3 m-2 p-2">
-        <Input label="Credits" type="number" step="0.01" name="credits"></Input>
-        <Button type="submit">Add</Button>
-      </form>
-
+    <form onSubmit={onSubmit} className="flex flex-col gap-3 lg:w-1/3">
+      <Input label="Credits" type="number" step="0.01" name="credits"></Input>
+      <Button type="submit">Add</Button>
       {loading && <div className="animate-spin ">.</div>}
       {error && <div> {error.message} </div>}
       {data && !error && (
@@ -47,7 +44,7 @@ const ProfileCreditsUpdate = ({ myuserId }: { myuserId: number }) => {
           {JSON.stringify(data.userCreditsUpdate?.result?.credits)}
         </div>
       )}
-    </>
+    </form>
   );
 };
 

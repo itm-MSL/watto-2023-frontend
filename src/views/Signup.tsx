@@ -57,7 +57,7 @@ export const Signup = () => {
   };
 
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-3 lg:w-1/3 ">
       <Header>Signup</Header>
       <form onSubmit={onSubmit} className="flex flex-col gap-3">
         <Input label="Username" type="text" name="username"></Input>

@@ -17,7 +17,7 @@ const SelectType = ({ name }: { name: string }) => {
   return (
     <div>
       <label>Type</label>
-      <select className="rounded-md px-4 py-2 border-2" name={name}>
+      <select className="rounded-md px-4 py-2 border-2 m-2" name={name}>
         {data?.typeList?.map((type) => (
           <option key={type.id} value={type.id}>
             {type.name}
