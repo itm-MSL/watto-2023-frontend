@@ -40,6 +40,9 @@ const MarketItems = () => {
     <>
       <SubHeader>Items for sale</SubHeader>
       <div className="p-2 grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 pt-2">
+        {data?.itemsExcludingOwnedByUser?.length === 0 && (
+          <h1 className="text-l">No items for sale check back later</h1>
+        )}
         {data?.itemsExcludingOwnedByUser?.map((item: any) => (
           <ItemCard key={item.id} item={item} />
         ))}

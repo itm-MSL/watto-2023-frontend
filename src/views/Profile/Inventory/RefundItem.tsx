@@ -11,12 +11,11 @@ const REFUND = graphql(/* GraphQL */ `
 `);
 
 const RefundItem = ({ itemId }: { itemId: number }) => {
-  const [refund, { data, loading, error }] = useMutation(REFUND, {
+  const [refund] = useMutation(REFUND, {
     refetchQueries: ['ItemList', 'ItemsByUserId'],
   });
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const data = new FormData(e.currentTarget);
 
     refund({
       variables: {
@@ -26,7 +25,7 @@ const RefundItem = ({ itemId }: { itemId: number }) => {
   };
 
   return (
-    <form onSubmit={onSubmit} className="flex flex-col gap-3 m-2 p-2">
+    <form onSubmit={onSubmit} className="flex flex-col">
       <Button type="submit">Refund item</Button>
     </form>
   );

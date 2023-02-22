@@ -4,8 +4,8 @@ import { NavButton } from './components/navButton';
 function App() {
   return (
     <>
-      <div className="flex flex-col mx-4 mt-4 px-4 bg-amber-800 rounded-2xl">
-        <h1 className="text-4xl text-white font-semibold m-4 text-center">
+      <div className="flex flex-col px-4 bg-white border-b-2 border-black sticky top-0 z-50 ">
+        <h1 className="text-4xl text-black font-semibold m-4 text-center">
           Watto's marketplace!
         </h1>
         <nav className="flex justify-center">
@@ -22,7 +22,7 @@ function App() {
           </Link>
         </nav>
       </div>
-      <section className="mx-4 p-4">
+      <section className="mx-4 p-4 relative">
         {/* Outlet for Login, Market, Add inventory, Profile or Logout view */}
         <Outlet />
       </section>

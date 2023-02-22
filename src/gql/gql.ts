@@ -23,10 +23,10 @@ const documents = {
     "\n  query ModelById($id: Int!) {\n    modelById(id: $id) {\n      id\n      name\n      multiplier\n    }\n  }\n": types.ModelByIdDocument,
     "\n  mutation TypeCreate($name: String!, $indexPrice: Int!) {\n    typeCreate(name: $name, indexPrice: $indexPrice) {\n      successful\n      result {\n        id\n        name\n        indexPrice\n        insertedAt\n      }\n    }\n  }\n": types.TypeCreateDocument,
     "\n  query TypeById($id: Int!) {\n    typeById(id: $id) {\n      id\n      name\n      indexPrice\n    }\n  }\n": types.TypeByIdDocument,
-    "\n  query Me {\n    me {\n      id\n      name\n      username\n      credits\n    }\n  }\n": types.MeDocument,
-    "\n  query ItemsByUserId($userId: Int!) {\n    itemsByUserId(userId: $userId) {\n      id\n      name\n      model {\n        id\n        name\n        multiplier\n      }\n      type {\n        id\n        name\n        indexPrice\n      }\n      price\n      updatedAt\n      forSale\n    }\n  }\n": types.ItemsByUserIdDocument,
+    "\n  query ItemsByUserId {\n    itemsByUserId {\n      id\n      name\n      model {\n        id\n        name\n        multiplier\n      }\n      type {\n        id\n        name\n        indexPrice\n      }\n      price\n      updatedAt\n      forSale\n    }\n  }\n": types.ItemsByUserIdDocument,
     "\n  mutation Refund($itemId: Int!) {\n    refund(itemId: $itemId) {\n      successful\n    }\n  }\n": types.RefundDocument,
     "\n  mutation ItemSellable($itemId: Int!) {\n    itemSellable(id: $itemId) {\n      successful\n    }\n  }\n": types.ItemSellableDocument,
+    "\n  query Me {\n    me {\n      id\n      name\n      username\n      credits\n    }\n  }\n": types.MeDocument,
     "\n  mutation UserCreditsUpdate($userId: Int!, $credits: Float!) {\n    userCreditsUpdate(userId: $userId, credits: $credits) {\n      successful\n      result {\n        id\n        credits\n      }\n    }\n  }\n": types.UserCreditsUpdateDocument,
     "\n  mutation Signup(\n    $username: String!\n    $password: String!\n    $name: String!\n    $credits: Float!\n  ) {\n    signup(\n      username: $username\n      password: $password\n      name: $name\n      credits: $credits\n    ) {\n      result {\n        token\n        user {\n          id\n          name\n        }\n      }\n      messages {\n        message\n      }\n    }\n  }\n": types.SignupDocument,
 };
@@ -88,11 +88,7 @@ export function graphql(source: "\n  query TypeById($id: Int!) {\n    typeById(i
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  query Me {\n    me {\n      id\n      name\n      username\n      credits\n    }\n  }\n"): (typeof documents)["\n  query Me {\n    me {\n      id\n      name\n      username\n      credits\n    }\n  }\n"];
-/**
- * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
- */
-export function graphql(source: "\n  query ItemsByUserId($userId: Int!) {\n    itemsByUserId(userId: $userId) {\n      id\n      name\n      model {\n        id\n        name\n        multiplier\n      }\n      type {\n        id\n        name\n        indexPrice\n      }\n      price\n      updatedAt\n      forSale\n    }\n  }\n"): (typeof documents)["\n  query ItemsByUserId($userId: Int!) {\n    itemsByUserId(userId: $userId) {\n      id\n      name\n      model {\n        id\n        name\n        multiplier\n      }\n      type {\n        id\n        name\n        indexPrice\n      }\n      price\n      updatedAt\n      forSale\n    }\n  }\n"];
+export function graphql(source: "\n  query ItemsByUserId {\n    itemsByUserId {\n      id\n      name\n      model {\n        id\n        name\n        multiplier\n      }\n      type {\n        id\n        name\n        indexPrice\n      }\n      price\n      updatedAt\n      forSale\n    }\n  }\n"): (typeof documents)["\n  query ItemsByUserId {\n    itemsByUserId {\n      id\n      name\n      model {\n        id\n        name\n        multiplier\n      }\n      type {\n        id\n        name\n        indexPrice\n      }\n      price\n      updatedAt\n      forSale\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
@@ -101,6 +97,10 @@ export function graphql(source: "\n  mutation Refund($itemId: Int!) {\n    refun
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(source: "\n  mutation ItemSellable($itemId: Int!) {\n    itemSellable(id: $itemId) {\n      successful\n    }\n  }\n"): (typeof documents)["\n  mutation ItemSellable($itemId: Int!) {\n    itemSellable(id: $itemId) {\n      successful\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  query Me {\n    me {\n      id\n      name\n      username\n      credits\n    }\n  }\n"): (typeof documents)["\n  query Me {\n    me {\n      id\n      name\n      username\n      credits\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

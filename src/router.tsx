@@ -11,7 +11,7 @@ import MarketModels from './views/Market/Models/ListModels';
 import MarketModelsDetails from './views/Market/Models/ModelDetails';
 import Profile from './views/Profile/Profile';
 import ProfileMe from './views/Profile/Me/ProfileMe';
-import ProfileInventory from './views/Profile/Inventory/ProfileInventory';
+import MyItems from './views/Profile/Inventory/MyItems';
 
 export const router = createBrowserRouter([
   {
@@ -66,7 +66,7 @@ export const router = createBrowserRouter([
         children: [
           {
             path: 'inventory',
-            element: <ProfileInventory />,
+            element: <MyItems />,
           },
           {
             path: 'me',

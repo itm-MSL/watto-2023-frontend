@@ -41,8 +41,8 @@ export const mapModelToColor = (modelName?: string) => {
 };
 
 export const ItemCard = ({ item }: { item: Item | undefined }) => {
-  const [userBuy, { data, loading, error }] = useMutation(USER_BUY, {
-    refetchQueries: ['ItemList'],
+  const [userBuy, { loading, error }] = useMutation(USER_BUY, {
+    refetchQueries: ['ItemList', 'ItemsByUserId'],
   });
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -66,7 +66,7 @@ export const ItemCard = ({ item }: { item: Item | undefined }) => {
           mapModelToColor(item?.model?.name?.toString())
         }
       >
-        <h1 className="font-medium">{item?.user.name} is selling: </h1>
+        <h2 className="font-medium">{item?.user.name} is selling: </h2>
         <h1 className="font-semibold">{item?.name?.toUpperCase()}</h1>
         <p className="font-medium">Price: {item?.price?.toFixed(2)}</p>
         <Button type="submit">Buy</Button>

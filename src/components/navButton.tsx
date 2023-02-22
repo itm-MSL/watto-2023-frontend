@@ -7,7 +7,7 @@ type ButtonProps = {
 export const NavButton = ({ children, ...rest }: ButtonProps) => {
   return (
     <button
-      className="bg-white text-amber-800 font-bold py-2 px-4 rounded border-x-2 border-t-2 hover:text-black hover:scale-105"
+      className="bg-white text-black font-bold py-2 px-4 rounded hover:text-amber-500 hover:scale-105"
       {...rest}
     >
       {children}
